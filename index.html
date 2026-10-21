@@ -212,6 +212,12 @@ footer p{font-family:var(--f-display);font-size:1.2rem;font-weight:700}
 .embed.short iframe{aspect-ratio:9/16;height:auto}
 .joby-media{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
 @media (max-width:760px){.joby-media{grid-template-columns:1fr}}
+/* Callouts: a white ring with an accent halo around the part; numbered when a photo has more than one */
+.callout{position:absolute;left:var(--x);top:var(--y);width:clamp(28px,11%,64px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2.5px solid #fff;box-shadow:0 0 0 2.5px var(--accent),0 2px 10px rgba(0,0,0,.45),inset 0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
+.callout[data-n]::after{content:attr(data-n);position:absolute;top:-4px;right:-4px;transform:translate(50%,-50%);width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;border:2px solid #fff;font:600 11px/1 var(--f-mono);display:grid;place-items:center}
+.tag .n{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:.62rem;margin-right:6px;vertical-align:1px}
+.lbwrap{position:relative;display:inline-block;line-height:0}
+.lbwrap .callout{width:clamp(36px,9%,84px)}
 /* Lightbox */
 dialog#lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;width:auto}
 dialog#lb::backdrop{background:rgba(8,12,15,.88)}
@@ -380,7 +386,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       <div class="body">
         <div class="jrows">
           <div class="jrow">
-            <button class="ph" style="--ar:0.6256" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand, arrows pointing to the main oxygen and fuel valves" loading="lazy"><span class="tag"><span class="mine">Main LOX &amp; fuel valves</span></span></button>
+            <button class="ph" style="--ar:0.6256" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand with the main oxygen and fuel valves circled" loading="lazy"><span class="callout" style="--x:40.6%;--y:34.8%"></span><span class="callout" style="--x:68.3%;--y:33.3%"></span><span class="tag"><span class="mine">Main LOX &amp; fuel valves (circled)</span></span></button>
             <button class="ph" style="--ar:1.3457" data-cap="Upper-stage thrust vector control actuators, installed"><img src="img/astra-tvc-installed.jpg" alt="Gold thrust vector control actuators installed on the upper-stage engine" loading="lazy"><span class="tag"><span class="mine">Upper-stage TVC actuators</span></span></button>
           </div>
           <div class="jrow">
@@ -410,8 +416,8 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       <div class="body">
         <div class="jrows">
           <div class="jrow">
-            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine, arrows pointing to the LOx boost pump and spin-start hardware" loading="lazy"><span class="tag"><span class="mine-role">LOx boost pump &amp; spin-start subsystems test lead</span></span></button>
-            <button class="ph" style="--ar:0.9031" data-cap="BE-4 main fuel valve"><img src="img/bo-be4-closeup.jpg" alt="Close-up of the BE-4 engine, arrow pointing to the main fuel valve" loading="lazy"><span class="tag"><span class="mine">BE-4 main fuel valve</span></span></button>
+            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine with the LOx boost pump and spin-start hardware circled" loading="lazy"><span class="callout" style="--x:26.7%;--y:34.4%" data-n="1"></span><span class="callout" style="--x:68.5%;--y:70.3%" data-n="2"></span><span class="tag"><span class="mine-role">Subsystems test lead</span><span><i class="n">1</i>LOx boost pump</span><span><i class="n">2</i>Spin-start</span></span></button>
+            <button class="ph" style="--ar:0.9031" data-cap="BE-4 main fuel valve"><img src="img/bo-be4-closeup.jpg" alt="Close-up of the BE-4 engine with the main fuel valve circled" loading="lazy"><span class="callout" style="--x:80.7%;--y:49.3%"></span><span class="tag"><span class="mine">BE-4 main fuel valve (circled)</span></span></button>
             <button class="ph" style="--ar:1.3389" data-cap="New Shepard drogue parachute cover · the capsule nose ring was also mine (not pictured)"><img src="img/bo-drogue-cover.jpg" alt="Mallory inspecting a drogue parachute cover with the New Shepard capsule behind" loading="lazy"><span class="tag"><span class="mine">New Shepard drogue parachute cover</span><span>Capsule nose ring also mine · not pictured</span></span></button>
           </div>
           <div class="jrow">
@@ -448,7 +454,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
   </footer>
 </div>
 
-<dialog id="lb" aria-label="Enlarged photo"><button type="button" aria-label="Close">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
+<dialog id="lb" aria-label="Enlarged photo"><button type="button" aria-label="Close">×</button><figure><span class="lbwrap"><img alt=""></span><figcaption></figcaption></figure></dialog>
 
 <script>
 // Timeline, chapter navigation, lightbox, email copy
@@ -480,7 +486,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
   var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('figcaption');
   document.querySelectorAll('.ph').forEach(function(b){
     b.addEventListener('click',function(){
-      var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent=b.getAttribute('data-cap')||'';
+      var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent=b.getAttribute('data-cap')||''; var wr=lb.querySelector('.lbwrap'); wr.querySelectorAll('.callout').forEach(function(c){c.remove();}); b.querySelectorAll('.callout').forEach(function(c){wr.appendChild(c.cloneNode(true));});
       try{lb.showModal();}catch(e){lb.setAttribute('open','');}
     });
   });
