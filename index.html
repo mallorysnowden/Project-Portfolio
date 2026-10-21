@@ -200,6 +200,8 @@ dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
 
 .chain{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
 .chain .node{flex:1 1 200px;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:4px;background:var(--bg)}
+.chain .node .nph{width:100%;aspect-ratio:var(--ar);max-height:150px;background:#fff;margin-bottom:6px}
+.chain .node .nph img{object-fit:contain}
 .chain .node .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .chain .node b{font-family:var(--f-display);font-size:1rem}
 .chain .node span:last-child{font-size:.8rem;color:var(--muted);line-height:1.4}
@@ -452,17 +454,28 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       <summary>
         <span class="logo" style="--lc:#1a2b4c">L3<img src="https://www.google.com/s2/favicons?domain=l3harris.com&amp;sz=128" alt="" onerror="this.remove()"></span>
         <span class="who"><h2>L3Harris Integrated Optical Systems</h2><p>Thermal Mechanical Engineer · <span class="yr">2011–2013</span></p></span>
-        <span class="strip" aria-hidden="true"></span>
+        <span class="strip" aria-hidden="true"><img src="img/l3-thermal-design.png" alt=""><img src="img/l3-temp-map.png" alt="" style="background:#fff;object-fit:contain"><img src="img/l3-constellation.png" alt="" style="background:#fff;object-fit:contain"></span>
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
         <p class="mission">Lead thermal engineer on a telescope study for a space-based <em>gravitational-wave observatory</em>, where the optics had to hold their path length steady to picometers.</p>
         <div class="chain" aria-label="Analysis chain">
-          <div class="node"><span class="k">Thermal</span><b>Thermal Desktop</b><span>On-orbit solar and electronics flux → telescope temperatures</span></div>
+          <div class="node"><button class="ph nph" style="--ar:1.4528" data-cap="Thermal model (Thermal Desktop)"><img src="img/l3-thermal.png" alt="Thermal model of the telescope" loading="lazy"></button><span class="k">Thermal</span><b>Thermal Desktop</b><span>On-orbit solar and electronics flux → telescope temperatures</span></div>
           <i aria-hidden="true"></i>
-          <div class="node"><span class="k">Structural</span><b>Femap / NASTRAN</b><span>Temperatures → thermal deformation of the optics</span></div>
+          <div class="node"><button class="ph nph" style="--ar:1.2049" data-cap="Structural finite-element model (Femap / NASTRAN)"><img src="img/l3-fem.png" alt="Finite-element model of the telescope structure" loading="lazy"></button><span class="k">Structural</span><b>Femap / NASTRAN</b><span>Temperatures → thermal deformation of the optics</span></div>
           <i aria-hidden="true"></i>
-          <div class="node"><span class="k">Optical</span><b>CODE V</b><span>Optic motions → optical path length and wavefront error</span></div>
+          <div class="node"><button class="ph nph" style="--ar:1.694" data-cap="Optical model (CODE V)"><img src="img/l3-optical.png" alt="Optical ray-trace model of the telescope" loading="lazy"></button><span class="k">Optical</span><b>CODE V</b><span>Optic motions → optical path length and wavefront error</span></div>
+        </div>
+        <div class="jrows">
+          <div class="jrow">
+            <button class="ph fit" style="--ar:1.1184" data-cap="Three spacecraft in a triangle, each pair of telescopes 5 million km apart"><img src="img/l3-constellation.png" alt="Three spacecraft in a triangular formation" loading="lazy"><span class="tag"><span>Three spacecraft · 5 million km arms</span></span></button>
+            <button class="ph" style="--ar:1.4654" data-cap="Telescope thermal design: metering structure, shrouds and sunshade"><img src="img/l3-thermal-design.png" alt="Thermal model of the telescope with its shrouds and sunshade" loading="lazy"><span class="tag"><span class="mine-role">Telescope thermal design</span></span></button>
+            <button class="ph fit" style="--ar:1.2906" data-cap="Telescope temperature map (K)"><img src="img/l3-temp-map.png" alt="Color temperature map of the telescope thermal model" loading="lazy"><span class="tag"><span class="mine-role">Temperature map</span></span></button>
+          </div>
+          <div class="jrow">
+            <button class="ph" style="--ar:3.5859" data-cap="Spacecraft and sunshade boundary model: solar and electronics flux inputs"><img src="img/l3-spacecraft.png" alt="Cylindrical spacecraft model with the telescope aperture and sunshade" loading="lazy"><span class="tag"><span class="mine-role">Spacecraft boundary model</span></span></button>
+            <button class="ph fit" style="--ar:2.5763" data-cap="Optical path-length change vs. time for one, two and three baffles against the spec limit"><img src="img/l3-opl.png" alt="Plot of optical path-length change over time for three baffle configurations" loading="lazy"><span class="tag"><span class="mine-role">Path length vs. baffle count</span></span></button>
+          </div>
         </div>
         <div class="earlier" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
           <div><b>Picometer stability</b><span>Thermal design to isolate the telescope from spacecraft and solar-array temperature swings.</span></div>
