@@ -86,6 +86,7 @@ details[open] .chev{transform:rotate(180deg)}
 @media (max-width:900px){.strip img:nth-child(n+3){display:none}}
 @media (max-width:640px){summary{grid-template-columns:auto minmax(0,1fr) auto;gap:12px}.strip{display:none}.logo{width:44px;height:44px;font-size:.9rem}}
 .body{padding:4px 18px 22px;display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--rule)}
+.body>.cards:first-child{margin-top:14px}
 .lead{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px}
 .chip{font-size:.8rem;border:1px solid var(--rule);border-radius:3px;padding:4px 9px;color:var(--ink);background:var(--bg)}
 .chip.ms{border-color:var(--accent);background:var(--accent-soft)}
@@ -216,10 +217,12 @@ footer p{font-family:var(--f-display);font-size:1.2rem;font-weight:700}
 .ovl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;--arrow:#f29a2e;opacity:0;transition:opacity .2s}
 .ovl .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .55s cubic-bezier(.3,.7,.2,1)}
 .ovl .hd{fill:var(--arrow);opacity:0;transition:opacity .15s}
+.ovl .bd{fill:var(--arrow);opacity:0;transition:opacity .15s}
+.ovl .bt{fill:#fff;font:600 11px var(--f-mono);text-anchor:middle;dominant-baseline:central}
 .ph:hover .ovl,.ph:focus-visible .ovl{opacity:1}
 .ph:hover .ovl .ln,.ph:focus-visible .ovl .ln{stroke-dashoffset:0}
-.ph:hover .ovl .hd,.ph:focus-visible .ovl .hd{opacity:1;transition-delay:.4s}
-@media (hover:none){.ovl{opacity:1}.ovl .ln{stroke-dashoffset:0}.ovl .hd{opacity:1}}
+.ph:hover .ovl .hd,.ph:focus-visible .ovl .hd,.ph:hover .ovl .bd,.ph:focus-visible .ovl .bd{opacity:1;transition-delay:.4s}
+@media (hover:none){.ovl{opacity:1}.ovl .ln{stroke-dashoffset:0}.ovl .hd,.ovl .bd{opacity:1}}
 @media (prefers-reduced-motion:reduce){.ovl .ln{stroke-dashoffset:0}.ovl .hd{transition-delay:0s}}
 .tag .n{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:.62rem;margin-right:6px;vertical-align:1px}
 .lbwrap{position:relative;display:inline-block;line-height:0}
@@ -274,6 +277,27 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
           <div><b>29 of 38</b><span>concepts most sensitive to plant availability</span></div>
         </div>
 
+        <div class="duo">
+          <div class="stack">
+            <p class="sub">Tools I built</p>
+            <div class="cards">
+              <a class="card" href="https://1cf.energy/tools/scoring/"><span class="k">Interactive tool</span><b>Scoring Explorer ↗</b><span>Re-weight the criteria and re-rank 38 concepts</span></a>
+              <a class="card" href="https://1cf.energy/tools/ai/"><span class="k">Interactive tool</span><b>AI Lever Console ↗</b><span>How AI-driven improvements move a mature tokamak's cost</span></a>
+              <a class="card" href="https://concepts.1cf.energy/"><span class="k">Pipeline output</span><b>Concept Explorer ↗</b><span>Every concept's sources, costs and sensitivities</span></a>
+            </div>
+          </div>
+          <div class="stack">
+            <p class="sub">Posts I wrote</p>
+            <div class="cards">
+              <a class="card" href="https://1cf.energy/from-papers-to-plant-economics/"><span class="k">Jun 2026</span><b>From Papers to Plant Economics ↗</b></a>
+              <a class="card" href="https://1cf.energy/most-mature-corridor/"><span class="k">Sep 2026</span><b>The Most-Mature Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/pulsed-plant-corridor/"><span class="k">Sep 2026</span><b>The Pulsed-Plant Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/byproduct-value-corridor/"><span class="k">Sep 2026</span><b>The Byproduct-Value Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/space-vs-fusion-sector/"><span class="k">May 2026</span><b>Space Sector vs. Fusion Sector ↗</b></a>
+              <a class="card" href="https://1cf.energy/the-unsolved-engineering-behind-fusion-power/"><span class="k">Mar 2026</span><b>The Unsolved Engineering Behind Fusion Power ↗</b></a>
+            </div>
+          </div>
+        </div>
         <p class="sub">Down-selection · click a concept for its ontology, a corridor for its study</p>
         <div class="flow-frame">
           <div class="flow-scroll"><svg id="flow" role="img" aria-label="Flow from 38 fusion concepts to six corridors, the designs studied, and their LCOE range"></svg></div>
@@ -306,27 +330,6 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
           </div>
         </div>
 
-        <div class="duo">
-          <div class="stack">
-            <p class="sub">Tools I built</p>
-            <div class="cards">
-              <a class="card" href="https://1cf.energy/tools/scoring/"><span class="k">Interactive tool</span><b>Scoring Explorer ↗</b><span>Re-weight the criteria and re-rank 38 concepts</span></a>
-              <a class="card" href="https://1cf.energy/tools/ai/"><span class="k">Interactive tool</span><b>AI Lever Console ↗</b><span>How AI-driven improvements move a mature tokamak's cost</span></a>
-              <a class="card" href="https://concepts.1cf.energy/"><span class="k">Pipeline output</span><b>Concept Explorer ↗</b><span>Every concept's sources, costs and sensitivities</span></a>
-            </div>
-          </div>
-          <div class="stack">
-            <p class="sub">Posts I wrote</p>
-            <div class="cards">
-              <a class="card" href="https://1cf.energy/from-papers-to-plant-economics/"><span class="k">Jun 2026</span><b>From Papers to Plant Economics ↗</b></a>
-              <a class="card" href="https://1cf.energy/most-mature-corridor/"><span class="k">Sep 2026</span><b>The Most-Mature Corridor ↗</b></a>
-              <a class="card" href="https://1cf.energy/pulsed-plant-corridor/"><span class="k">Sep 2026</span><b>The Pulsed-Plant Corridor ↗</b></a>
-              <a class="card" href="https://1cf.energy/byproduct-value-corridor/"><span class="k">Sep 2026</span><b>The Byproduct-Value Corridor ↗</b></a>
-              <a class="card" href="https://1cf.energy/space-vs-fusion-sector/"><span class="k">May 2026</span><b>Space Sector vs. Fusion Sector ↗</b></a>
-              <a class="card" href="https://1cf.energy/the-unsolved-engineering-behind-fusion-power/"><span class="k">Mar 2026</span><b>The Unsolved Engineering Behind Fusion Power ↗</b></a>
-            </div>
-          </div>
-        </div>
       </div>
     </details>
 
@@ -362,6 +365,11 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
+        <div class="cards">
+          <a class="card" href="https://www.jobyaviation.com/news/joby-begins-testing-at-the-worlds-largest-wind-tunnel-facility"><span class="k">In the news · Feb 2023</span><b>Joby begins testing at the world's largest wind tunnel ↗</b><span>Joby Aviation · NASA Ames</span></a>
+          <a class="card" href="https://patents.google.com/patent/WO2025106122A2/en?q=(compact+blade+pitch+aircraft)&amp;inventor=mallory+snowden&amp;assignee=joby"><span class="k">Patent</span><b>Compact Blade Pitch Actuation ↗</b><span>WO2025106122A2 · Google Patents</span></a>
+          <a class="card" href="https://www.youtube.com/shorts/z9W2qjyFOnE"><span class="k">Video</span><b>Variable-pitch actuator, behind the scenes ↗</b><span>YouTube short</span></a>
+        </div>
         <div class="grid">
           <button class="ph fit w4 h4" data-cap="Patent figure · compact blade-pitch mechanism, top view"><img src="img/joby-patent-fig1.png" alt="Patent drawing of the blade-pitch mechanism, top view" loading="lazy"><span class="tag"><span class="mine">Patent fig.</span></span></button>
           <button class="ph fit w4 h4" data-cap="Patent figure · compact blade-pitch mechanism, isometric"><img src="img/joby-patent-fig2.png" alt="Patent drawing of the blade-pitch mechanism, isometric view" loading="lazy"><span class="tag"><span class="mine">Patent fig.</span></span></button>
@@ -369,14 +377,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
           <button class="ph w8 h4" data-cap="NASA Ames wind tunnel, 2023 · I supported testing with realtime data analysis"><img src="img/joby-wind-tunnel.jpg" alt="Joby propeller on a test stand in the NASA Ames wind tunnel" loading="lazy"><span class="tag"><span>NASA Ames wind tunnel · 2023</span><span class="mine-role">Supported testing · realtime data analysis</span></span></button>
           <button class="ph w4 h4" data-cap="Variable-pitch actuator"><img src="img/joby-actuator.jpg" alt="Variable-pitch actuator on a test fixture" loading="lazy"><span class="tag"><span class="mine">Variable-pitch actuator</span></span></button>
         </div>
-        <div class="joby-media">
-          <div class="cards">
-          <a class="card" href="https://www.jobyaviation.com/news/joby-begins-testing-at-the-worlds-largest-wind-tunnel-facility"><span class="k">In the news · Feb 2023</span><b>Joby begins testing at the world's largest wind tunnel ↗</b><span>Joby Aviation · NASA Ames</span></a>
-          <a class="card" href="https://patents.google.com/patent/WO2025106122A2/en?q=(compact+blade+pitch+aircraft)&amp;inventor=mallory+snowden&amp;assignee=joby"><span class="k">Patent</span><b>Compact Blade Pitch Actuation ↗</b><span>WO2025106122A2 · Google Patents</span></a>
-          <a class="card" href="https://www.youtube.com/shorts/z9W2qjyFOnE"><span class="k">Video</span><b>Variable-pitch actuator, behind the scenes ↗</b><span>YouTube short</span></a>
-        </div>
-          <div class="embed short"><iframe src="https://www.youtube.com/embed/z9W2qjyFOnE" title="Variable-pitch actuator, behind the scenes" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span class="cap">Variable-pitch actuator · behind the scenes</span></div>
-        </div>
+        <div class="embed short"><iframe src="https://www.youtube.com/embed/z9W2qjyFOnE" title="Variable-pitch actuator, behind the scenes" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span class="cap">Variable-pitch actuator · behind the scenes</span></div>
       </div>
     </details>
 
@@ -389,10 +390,13 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
+        <div class="cards">
+          <a class="card" href="https://arstechnica.com/science/2021/11/astras-quick-and-dirty-development-plan-pays-off-as-its-rocket-goes-orbital/"><span class="k">In the news · Nov 2021</span><b>Astra becomes the fastest rocket company to reach orbit ↗</b><span>Ars Technica · Rocket 3</span></a>
+        </div>
         <div class="jrows">
           <div class="jrow">
             <button class="ph" style="--ar:0.6256" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand, arrows pointing to the main oxygen and fuel valves" loading="lazy"><span class="tag"><span class="mine" data-to="40.0,36.6;66.7,34.9">Main LOX &amp; fuel valves</span></span></button>
-            <button class="ph" style="--ar:1.3457" data-cap="Upper-stage thrust vector control actuators, installed"><img src="img/astra-tvc-installed.jpg" alt="Gold thrust vector control actuators installed on the upper-stage engine" loading="lazy"><span class="tag"><span class="mine">Upper-stage TVC actuators</span></span></button>
+            <button class="ph" style="--ar:1.3457" data-cap="Upper-stage thrust vector control actuators, installed"><img src="img/astra-tvc-installed.jpg" alt="Gold thrust vector control actuators installed on the upper-stage engine" loading="lazy"><span class="tag"><span class="mine" data-to="49.6,34.7;50.9,71.3">Upper-stage TVC actuators</span></span></button>
           </div>
           <div class="jrow">
             <button class="ph" style="--ar:1.9975" data-cap="Upper-stage TVC actuator on the bench"><img src="img/astra-tvc-bench.jpg" alt="Thrust vector control actuator on a workbench" loading="lazy"><span class="tag"><span class="mine">TVC actuator</span></span></button>
@@ -403,9 +407,6 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
             <button class="ph fit" style="--ar:1.6546" data-cap="Cryogenic leak-check rig · piping and instrumentation diagram"><img src="img/astra-leak-rig-pid.jpg" alt="Piping and instrumentation diagram of the cryogenic leak-check rig" loading="lazy"><span class="tag"><span class="mine">Cryo leak-check rig · P&amp;ID</span></span></button>
             <button class="ph" style="--ar:0.75" data-cap="The leak-check rig in use by my intern, Sarah"><img src="img/astra-leak-rig-intern.jpg" alt="Intern operating the leak-check rig panel" loading="lazy"><span class="tag"><span class="mine">Leak-check rig in use</span></span></button>
           </div>
-        </div>
-        <div class="cards">
-          <a class="card" href="https://arstechnica.com/science/2021/11/astras-quick-and-dirty-development-plan-pays-off-as-its-rocket-goes-orbital/"><span class="k">In the news · Nov 2021</span><b>Astra becomes the fastest rocket company to reach orbit ↗</b><span>Ars Technica · Rocket 3</span></a>
         </div>
       </div>
     </details>
@@ -419,18 +420,18 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
+        <div class="cards">
+          <a class="card" href="https://www.scientificamerican.com/article/blue-origin-makes-historic-reusable-rocket-landing-in-epic-test-flight/"><span class="k">In the news · Nov 2015</span><b>Blue Origin makes historic reusable rocket landing ↗</b><span>Scientific American · New Shepard</span></a>
+        </div>
         <div class="jrows">
           <div class="jrow">
-            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine, arrows pointing to the LOx boost pump and spin-start hardware" loading="lazy"><span class="tag"><span class="mine-role">Subsystems test lead</span><span data-to="26.2,36.4"><i class="n">1</i>LOx boost pump</span><span data-to="65.6,71.0"><i class="n">2</i>Spin-start</span></span></button>
+            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine, arrows pointing to the LOx boost pump and spin-start hardware" loading="lazy"><span class="tag"><span class="mine-role">Subsystems test lead</span><span data-to="26.2,36.4" data-n="1"><i class="n">1</i>LOx boost pump</span><span data-to="65.6,71.0" data-n="2"><i class="n">2</i>Spin-start</span></span></button>
             <button class="ph" style="--ar:0.9031" data-cap="BE-4 main fuel valve"><img src="img/bo-be4-closeup.jpg" alt="Close-up of the BE-4 engine, arrow pointing to the main fuel valve" loading="lazy"><span class="tag"><span class="mine" data-to="77.0,51.4">BE-4 main fuel valve</span></span></button>
             <button class="ph" style="--ar:1.3389" data-cap="New Shepard drogue parachute cover · the capsule nose ring was also mine (not pictured)"><img src="img/bo-drogue-cover.jpg" alt="Mallory inspecting a drogue parachute cover with the New Shepard capsule behind" loading="lazy"><span class="tag"><span class="mine">New Shepard drogue parachute cover</span><span>Capsule nose ring also mine · not pictured</span></span></button>
           </div>
           <div class="jrow">
             <button class="ph" style="--ar:2.9977" data-cap="Main fuel valve cryo testing"><img src="img/bo-mfv-cryo.jpg" alt="Main fuel valve on a cryogenic test stand, frosted lines" loading="lazy"><span class="tag"><span>Main fuel valve cryo testing</span></span></button>
           </div>
-        </div>
-        <div class="cards">
-          <a class="card" href="https://www.scientificamerican.com/article/blue-origin-makes-historic-reusable-rocket-landing-in-epic-test-flight/"><span class="k">In the news · Nov 2015</span><b>Blue Origin makes historic reusable rocket landing ↗</b><span>Scientific American · New Shepard</span></a>
         </div>
       </div>
     </details>
@@ -529,6 +530,9 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
         var w=hl*0.5, hd=document.createElementNS(NS,'path'); hd.setAttribute('class','hd');
         hd.setAttribute('d','M'+tx+','+ty+' L'+(bx+w*Math.cos(ang+Math.PI/2))+','+(by+w*Math.sin(ang+Math.PI/2))+' L'+(bx+w*Math.cos(ang-Math.PI/2))+','+(by+w*Math.sin(ang-Math.PI/2))+' Z');
         svg.appendChild(hd);
+        var n=sp.getAttribute('data-n'); if(n){ var d=hl+13, cx=tx-d*Math.cos(ang), cy=ty-d*Math.sin(ang);
+          var c=document.createElementNS(NS,'circle'); c.setAttribute('class','bd'); c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',10); svg.appendChild(c);
+          var tx2=document.createElementNS(NS,'text'); tx2.setAttribute('class','bd bt'); tx2.setAttribute('x',cx); tx2.setAttribute('y',cy); tx2.textContent=n; svg.appendChild(tx2); }
       });
     });
     ph.insertBefore(svg, ph.querySelector('.tag'));
