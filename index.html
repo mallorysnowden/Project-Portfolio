@@ -212,8 +212,16 @@ footer p{font-family:var(--f-display);font-size:1.2rem;font-weight:700}
 .embed.short iframe{aspect-ratio:9/16;height:auto}
 .joby-media{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
 @media (max-width:760px){.joby-media{grid-template-columns:1fr}}
-/* Arrows: SVG overlays in image coordinates, so they stay on target at any size */
-.ovl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;--arrow:#f29a2e;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+/* Hover arrows: fade in from the label, solid at the part */
+.ovl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;--arrow:#f29a2e;opacity:0;transition:opacity .2s}
+.ovl .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .55s cubic-bezier(.3,.7,.2,1)}
+.ovl .hd{fill:var(--arrow);opacity:0;transition:opacity .15s}
+.ph:hover .ovl,.ph:focus-visible .ovl{opacity:1}
+.ph:hover .ovl .ln,.ph:focus-visible .ovl .ln{stroke-dashoffset:0}
+.ph:hover .ovl .hd,.ph:focus-visible .ovl .hd{opacity:1;transition-delay:.4s}
+@media (hover:none){.ovl{opacity:1}.ovl .ln{stroke-dashoffset:0}.ovl .hd{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ovl .ln{stroke-dashoffset:0}.ovl .hd{transition-delay:0s}}
+.tag .n{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-size:.62rem;margin-right:6px;vertical-align:1px}
 .lbwrap{position:relative;display:inline-block;line-height:0}
 /* Lightbox */
 dialog#lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;width:auto}
@@ -244,7 +252,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
   </header>
 
 
-  <p class="note"><i></i><span>Every component tagged <b>My part</b> is one I designed or developed. CAD and drawings are proprietary, so the work is shown through public photos and published figures. Click any photo to enlarge.</span></p>
+  <p class="note"><i></i><span>Every component tagged <b>My part</b> is one I designed or developed. CAD and drawings are proprietary, so the work is shown through public photos and published figures. Hover a photo to point out my parts; click to enlarge.</span></p>
 
   <div class="timeline" aria-label="Career timeline"><div class="tl-track" id="tl"></div></div>
 
@@ -383,7 +391,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       <div class="body">
         <div class="jrows">
           <div class="jrow">
-            <button class="ph" style="--ar:0.6256" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand, arrows pointing to the main oxygen and fuel valves" loading="lazy"><svg class="ovl" viewBox="0 0 1001 1600" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="ah10011600" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.2" markerHeight="5.2" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 L2.5,5 Z" fill="var(--arrow)" stroke="#fff" stroke-width="1" stroke-linejoin="round"/></marker></defs><g fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="16.9" stroke-linecap="round"><path d="M295,1443 L400,586"/><path d="M295,1443 L667,558"/></g><g fill="none" stroke="var(--arrow)" stroke-width="6.5" stroke-linecap="round" marker-end="url(#ah10011600)"><path d="M295,1443 L400,586"/><path d="M295,1443 L667,558"/></g><circle cx="295" cy="1443" r="10.4" fill="var(--arrow)" stroke="#fff" stroke-width="5.2"/></svg><span class="tag"><span class="mine">Main LOX &amp; fuel valves</span></span></button>
+            <button class="ph" style="--ar:0.6256" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand, arrows pointing to the main oxygen and fuel valves" loading="lazy"><span class="tag"><span class="mine" data-to="40.0,36.6;66.7,34.9">Main LOX &amp; fuel valves</span></span></button>
             <button class="ph" style="--ar:1.3457" data-cap="Upper-stage thrust vector control actuators, installed"><img src="img/astra-tvc-installed.jpg" alt="Gold thrust vector control actuators installed on the upper-stage engine" loading="lazy"><span class="tag"><span class="mine">Upper-stage TVC actuators</span></span></button>
           </div>
           <div class="jrow">
@@ -413,8 +421,8 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       <div class="body">
         <div class="jrows">
           <div class="jrow">
-            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine, arrows pointing to the LOx boost pump and spin-start hardware" loading="lazy"><svg class="ovl" viewBox="0 0 1124 1600" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="ah11241600" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.2" markerHeight="5.2" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 L2.5,5 Z" fill="var(--arrow)" stroke="#fff" stroke-width="1" stroke-linejoin="round"/></marker></defs><g fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="19.0" stroke-linecap="round"><path d="M184,1413 L294,583"/><path d="M184,1413 L738,1137"/></g><g fill="none" stroke="var(--arrow)" stroke-width="7.3" stroke-linecap="round" marker-end="url(#ah11241600)"><path d="M184,1413 L294,583"/><path d="M184,1413 L738,1137"/></g><circle cx="184" cy="1413" r="11.7" fill="var(--arrow)" stroke="#fff" stroke-width="5.8"/></svg><span class="tag"><span class="mine-role">LOx boost pump &amp; spin-start subsystems test lead</span></span></button>
-            <button class="ph" style="--ar:0.9031" data-cap="BE-4 main fuel valve"><img src="img/bo-be4-closeup.jpg" alt="Close-up of the BE-4 engine, arrow pointing to the main fuel valve" loading="lazy"><svg class="ovl" viewBox="0 0 1445 1600" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="ah14451600" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.2" markerHeight="5.2" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 L2.5,5 Z" fill="var(--arrow)" stroke="#fff" stroke-width="1" stroke-linejoin="round"/></marker></defs><g fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="24.4" stroke-linecap="round"><path d="M769,962 L1112,822"/></g><g fill="none" stroke="var(--arrow)" stroke-width="9.4" stroke-linecap="round" marker-end="url(#ah14451600)"><path d="M769,962 L1112,822"/></g><circle cx="769" cy="962" r="15.0" fill="var(--arrow)" stroke="#fff" stroke-width="7.5"/></svg><span class="tag"><span class="mine">BE-4 main fuel valve</span></span></button>
+            <button class="ph" style="--ar:0.7025" data-cap="BE-4 · I led testing of the LOx boost pump and spin-start subsystems"><img src="img/bo-be4-standing.jpg" alt="Mallory beside a BE-4 engine, arrows pointing to the LOx boost pump and spin-start hardware" loading="lazy"><span class="tag"><span class="mine-role">Subsystems test lead</span><span data-to="26.2,36.4"><i class="n">1</i>LOx boost pump</span><span data-to="65.6,71.0"><i class="n">2</i>Spin-start</span></span></button>
+            <button class="ph" style="--ar:0.9031" data-cap="BE-4 main fuel valve"><img src="img/bo-be4-closeup.jpg" alt="Close-up of the BE-4 engine, arrow pointing to the main fuel valve" loading="lazy"><span class="tag"><span class="mine" data-to="77.0,51.4">BE-4 main fuel valve</span></span></button>
             <button class="ph" style="--ar:1.3389" data-cap="New Shepard drogue parachute cover · the capsule nose ring was also mine (not pictured)"><img src="img/bo-drogue-cover.jpg" alt="Mallory inspecting a drogue parachute cover with the New Shepard capsule behind" loading="lazy"><span class="tag"><span class="mine">New Shepard drogue parachute cover</span><span>Capsule nose ring also mine · not pictured</span></span></button>
           </div>
           <div class="jrow">
@@ -483,7 +491,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
   var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('figcaption');
   document.querySelectorAll('.ph').forEach(function(b){
     b.addEventListener('click',function(){
-      var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent=b.getAttribute('data-cap')||''; var wr=lb.querySelector('.lbwrap'); wr.querySelectorAll('.ovl').forEach(function(c){c.remove();}); b.querySelectorAll('.ovl').forEach(function(c){wr.appendChild(c.cloneNode(true));});
+      var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent=b.getAttribute('data-cap')||'';
       try{lb.showModal();}catch(e){lb.setAttribute('open','');}
     });
   });
@@ -496,6 +504,41 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){sel();});} else sel();
     function sel(){var r=document.createRange(); r.selectNodeContents(eb); var s=getSelection(); s.removeAllRanges(); s.addRange(r);}
   });
+})();
+</script>
+<script>
+// Hover arrows: each labelled tag points from its own centre to the part it names
+(function(){
+  var NS='http://www.w3.org/2000/svg', uid=0;
+  function draw(ph){
+    var old=ph.querySelector('.ovl'); if(old) old.remove();
+    var W=ph.clientWidth, H=ph.clientHeight; if(!W||!H) return;
+    var pr=ph.getBoundingClientRect();
+    var svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','ovl'); svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('aria-hidden','true');
+    var defs=document.createElementNS(NS,'defs'); svg.appendChild(defs);
+    ph.querySelectorAll('.tag [data-to]').forEach(function(sp){
+      var r=sp.getBoundingClientRect(), ox=r.left+r.width/2-pr.left, oy=r.top+r.height/2-pr.top;
+      sp.getAttribute('data-to').split(';').forEach(function(t){
+        var xy=t.split(','), tx=W*parseFloat(xy[0])/100, ty=H*parseFloat(xy[1])/100;
+        var ang=Math.atan2(ty-oy,tx-ox), hl=12, bx=tx-hl*Math.cos(ang), by=ty-hl*Math.sin(ang), id='ag'+(++uid);
+        var g=document.createElementNS(NS,'linearGradient'); g.setAttribute('id',id); g.setAttribute('gradientUnits','userSpaceOnUse');
+        g.setAttribute('x1',ox); g.setAttribute('y1',oy); g.setAttribute('x2',tx); g.setAttribute('y2',ty);
+        [['0','0'],['.35','.25'],['1','1']].forEach(function(s){var st=document.createElementNS(NS,'stop'); st.setAttribute('offset',s[0]); st.setAttribute('stop-color','var(--arrow)'); st.setAttribute('stop-opacity',s[1]); g.appendChild(st);});
+        defs.appendChild(g);
+        var ln=document.createElementNS(NS,'path'); ln.setAttribute('class','ln'); ln.setAttribute('d','M'+ox+','+oy+' L'+bx+','+by); ln.setAttribute('pathLength','1'); ln.setAttribute('stroke','url(#'+id+')'); svg.appendChild(ln);
+        var w=hl*0.5, hd=document.createElementNS(NS,'path'); hd.setAttribute('class','hd');
+        hd.setAttribute('d','M'+tx+','+ty+' L'+(bx+w*Math.cos(ang+Math.PI/2))+','+(by+w*Math.sin(ang+Math.PI/2))+' L'+(bx+w*Math.cos(ang-Math.PI/2))+','+(by+w*Math.sin(ang-Math.PI/2))+' Z');
+        svg.appendChild(hd);
+      });
+    });
+    ph.insertBefore(svg, ph.querySelector('.tag'));
+  }
+  var phs=[].slice.call(document.querySelectorAll('.ph')).filter(function(p){return p.querySelector('[data-to]');});
+  function all(){phs.forEach(draw);}
+  phs.forEach(function(p){ p.addEventListener('mouseenter',function(){draw(p);}); p.addEventListener('focus',function(){draw(p);}); });
+  document.querySelectorAll('details.ch').forEach(function(d){d.addEventListener('toggle',function(){ if(d.open) requestAnimationFrame(all); });});
+  var t; window.addEventListener('resize',function(){clearTimeout(t); t=setTimeout(all,120);});
+  all();
 })();
 </script>
 <script>
