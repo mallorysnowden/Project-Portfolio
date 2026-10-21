@@ -197,6 +197,23 @@ dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .verdict b{font-family:var(--f-display);font-stretch:112%;font-size:1.6rem;font-weight:800;color:var(--accent);display:block;line-height:1.1}
 .verdict span{font-size:.82rem;color:var(--muted)}
 
+.nasa-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:18px;align-items:center;padding-top:14px}
+.nasa-top .mission{padding-top:0}
+.nasa-top .ph{aspect-ratio:var(--ar)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.step{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:4px;background:var(--bg);min-width:0}
+.step .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.step p{font-size:.86rem;line-height:1.45}
+.step .ph{aspect-ratio:var(--ar);width:100%}
+.step .pair{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+.step .pair .ph{width:100%}
+.step>.ph{margin-top:auto}
+.flow{display:flex;flex-direction:column;gap:0;margin-top:auto}
+.flow span,.flow b{font-size:.8rem;padding:7px 10px;border:1px solid var(--rule);border-radius:3px;background:var(--surface);position:relative}
+.flow span+span,.flow span+b{margin-top:14px}
+.flow span+span::before,.flow span+b::before{content:"";position:absolute;left:50%;top:-12px;width:2px;height:10px;background:var(--muted);transform:translateX(-50%)}
+.flow b{font-family:var(--f-display);font-size:.9rem;background:var(--accent);color:#fff;border-color:var(--accent);text-align:center}
+@media (max-width:900px){.steps{grid-template-columns:1fr}.nasa-top{grid-template-columns:1fr}}
 .chain{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
 .chain .node{flex:1 1 200px;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:4px;background:var(--bg)}
 .chain .node .nph{width:100%;aspect-ratio:var(--ar);max-height:150px;background:#fff;margin-bottom:6px}
@@ -477,20 +494,37 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
-        <div class="jrows" style="margin-top:14px">
-          <div class="jrow">
-            <button class="ph" style="--ar:1.5025" data-cap="NASA Langley Research Center"><img src="img/nasa-langley.jpg" alt="Mallory in a flight suit in front of a NASA Langley aircraft and hangar" loading="lazy"><span class="tag"><span>NASA Langley · 2009 &amp; 2010</span></span></button>
-            <button class="ph" style="--ar:1.3333" data-cap="Vacuum-bagging a composite honeycomb panel for thermal-vacuum testing"><img src="img/nasa-vacuum-bag.jpg" alt="Composite honeycomb panel under a vacuum bag on a lab bench" loading="lazy"><span class="tag"><span class="mine-role">Honeycomb panels · built &amp; TVAC tested</span></span></button>
-            <button class="ph" style="--ar:0.8596" data-cap="Rheometer used for cure-cycle testing"><img src="img/nasa-rheometer.jpg" alt="Rheometer instrument" loading="lazy"><span class="tag"><span>Rheometer</span></span></button>
-            <button class="ph" style="--ar:0.8475" data-cap="Differential scanning calorimeter"><img src="img/nasa-dsc.jpg" alt="Differential scanning calorimeter instrument" loading="lazy"><span class="tag"><span>DSC</span></span></button>
-          </div>
-          <div class="jrow">
-            <button class="ph fit" style="--ar:1.142" data-cap="Rheology of MTM45-1 at 1 °C/min: gel point at the G′/G″ crossover, vitrification at the G″ peak"><img src="img/nasa-rheology.png" alt="Rheology plot of storage and loss modulus versus time during cure" loading="lazy"><span class="tag"><span class="mine-role">Gel point &amp; vitrification</span></span></button>
-            <button class="ph fit" style="--ar:1.2928" data-cap="Co-cure check: prepreg MTM45-1 and adhesive AF-555M under the same ramp-and-hold cycle"><img src="img/nasa-cocure.png" alt="Viscosity versus time for a prepreg and an adhesive under one cure cycle" loading="lazy"><span class="tag"><span class="mine-role">Prepreg + adhesive co-cure</span></span></button>
-            <button class="ph fit" style="--ar:1.3339" data-cap="Thermal pre-treatments I prescribed so the adhesive consolidates without bubbling under vacuum"><img src="img/nasa-pretreat.png" alt="Adhesive viscosity curves after several thermal pre-treatments" loading="lazy"><span class="tag"><span class="mine-role">Adhesive pre-treatment</span></span></button>
-            <button class="ph fit" style="--ar:1.4435" data-cap="DSC cure exotherm; my MATLAB tool integrates it to map degree of cure onto the rheology data"><img src="img/nasa-dsc-exotherm.png" alt="Differential scanning calorimetry heat-flow curve with cure exotherm" loading="lazy"><span class="tag"><span class="mine-role">DSC exotherm → MATLAB degree of cure</span></span></button>
-          </div>
+        <div class="nasa-top">
+          <p class="mission">Fabricated and tested graphite-fiber composites for <em>large spacecraft structures</em>, then built the tool that tied two independent cure tests together.</p>
+          <button class="ph" style="--ar:1.5025" data-cap="NASA Langley Research Center"><img src="img/nasa-langley.jpg" alt="Mallory in a flight suit in front of a NASA Langley aircraft and hangar" loading="lazy"><span class="tag"><span>NASA Langley</span></span></button>
         </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="k">01 · Summer 2009 · Characterize</span>
+            <p>Ran supplier resins and adhesives (Cytec, Hexcel, ATK, 3M) through cure cycles on a rheometer and a calorimeter, looking for cures that fully harden without going brittle.</p>
+            <div class="pair">
+              <button class="ph fit" style="--ar:1.142" data-cap="Rheometer: viscosity through a 1 °C/min cure, with the gel point (G′/G″ crossover) and vitrification (G″ peak)"><img src="img/nasa-rheology.png" alt="Rheology plot of storage and loss modulus versus time during cure" loading="lazy"><span class="tag"><span>Rheometer · viscosity</span></span></button>
+              <button class="ph fit" style="--ar:1.4435" data-cap="Calorimeter: heat released as the resin cures"><img src="img/nasa-dsc-exotherm.png" alt="Differential scanning calorimetry heat-flow curve with cure exotherm" loading="lazy"><span class="tag"><span>Calorimeter · heat flow</span></span></button>
+            </div>
+          </li>
+          <li class="step">
+            <span class="k">02 · Summer 2010 · Correlate</span>
+            <p>Wrote a MATLAB tool that joins the two tests, giving the lab its first way to read viscosity against degree of cure for any material in the database.</p>
+            <div class="flow">
+              <span>Load calorimeter run</span>
+              <span>Filter noise, find exotherm peak</span>
+              <span>Integrate heat released to time <i>t</i></span>
+              <span>÷ full-cure heat = degree of cure</span>
+              <span>Merge rheology from the same cycle</span>
+              <b>Viscosity vs. degree of cure</b>
+            </div>
+          </li>
+          <li class="step">
+            <span class="k">03 · Summer 2010 · Build</span>
+            <p>Fabricated aluminum honeycomb panels with prepreg face sheets, vacuum-bagged them and took them through their cure cycle.</p>
+            <button class="ph" style="--ar:1.3333" data-cap="Vacuum-bagging an aluminum honeycomb panel with prepreg face sheets"><img src="img/nasa-vacuum-bag.jpg" alt="Composite honeycomb panel under a vacuum bag on a lab bench" loading="lazy"><span class="tag"><span class="mine">Honeycomb panel</span></span></button>
+          </li>
+        </ol>
       </div>
     </details>
 
