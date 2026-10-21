@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mallory Snowden: systems engineer, from flight hardware at Blue Origin, Astra and Joby to fusion techno-economics.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Mallory Snowden Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a title block, a career timeline that doubles as navigation, then one expandable chapter per employer. Collapsed chapters show a photo strip; open chapters are photo grids tagged like flight hardware. */
+:root{
+  --bg:#eef1f2; --surface:#ffffff; --ink:#121a21; --muted:#5a6772; --rule:#d5dce1;
+  --accent:#c4501a; --accent-soft:#f6e3d8; --teal:#0f5f6e; --teal-soft:#d9eaec; --target:#8a6a1f;
+  --c-mm:#3d6ba6; --c-bp:#3f8f66; --c-pu:#b85b22; --c-dc:#a96d94; --c-mn:#c38f2a; --c-cl:#5d7f88;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1317; --surface:#151d23; --ink:#e6ebee; --muted:#93a1ab; --rule:#26323a;
+  --accent:#f08a4b; --accent-soft:#3a2418; --teal:#62b9c7; --teal-soft:#123b49; --target:#d9b25a;
+  --c-mm:#73a0e0; --c-bp:#68bd90; --c-pu:#e3854d; --c-dc:#d099bd; --c-mn:#ddad52; --c-cl:#93b5be;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1317; --surface:#151d23; --ink:#e6ebee; --muted:#93a1ab; --rule:#26323a;
+  --accent:#f08a4b; --accent-soft:#3a2418; --teal:#62b9c7; --teal-soft:#123b49; --target:#d9b25a;
+  --c-mm:#73a0e0; --c-bp:#68bd90; --c-pu:#e3854d; --c-dc:#d099bd; --c-mn:#ddad52; --c-cl:#93b5be;
+  color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.05;text-wrap:balance}
+p{margin:0}
+a{color:var(--teal);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Title block */
+.title{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:22px}
+.title h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;font-stretch:118%;letter-spacing:-.02em}
+.title .role{font-family:var(--f-display);font-stretch:100%;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:500;margin-top:10px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.links a,.links button{font-family:var(--f-mono);font-size:.78rem;text-decoration:none;color:var(--ink);border:1px solid var(--rule);background:var(--surface);border-radius:3px;padding:6px 10px;cursor:pointer}
+.links a:hover,.links button:hover{border-color:var(--accent)}
+@media (max-width:760px){.title{grid-template-columns:1fr}.links{justify-content:flex-start}}
+
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--rule);background:var(--surface);border-radius:4px}
+.stat{padding:14px 16px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:2px}
+.stat:first-child{border-left:0}
+.stat b{font-family:var(--f-display);font-stretch:112%;font-size:1.9rem;font-weight:800;line-height:1}
+.stat span{font-size:.8rem;color:var(--muted);line-height:1.3}
+@media (max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{border-left:0;border-top:1px solid var(--rule)}.stat:nth-child(-n+2){border-top:0}.stat:nth-child(even){border-left:1px solid var(--rule)}}
+.note{font-size:.85rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start;max-width:80ch}
+.note i{flex:none;width:8px;height:8px;margin-top:7px;background:var(--accent);border-radius:50%}
+
+/* Timeline nav */
+.timeline{position:relative;overflow-x:auto;padding-bottom:4px}
+.tl-track{position:relative;min-width:720px;height:74px}
+.tl-axis{position:absolute;left:0;right:0;top:44px;height:2px;background:var(--rule)}
+.tl-seg{position:absolute;top:38px;height:14px;border-radius:2px;background:var(--ink);color:var(--surface);font-family:var(--f-mono);font-size:.68rem;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;overflow:hidden;border:0;cursor:pointer;padding:0 4px}
+.tl-seg.edu{background:var(--teal)}
+.tl-seg.now{background:var(--accent)}
+.tl-seg:hover{filter:brightness(1.15)}
+.tl-label{position:absolute;top:8px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
+.tl-year{position:absolute;top:58px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
+
+/* Chapters */
+.chapters{display:flex;flex-direction:column;gap:14px}
+details.ch{background:var(--surface);border:1px solid var(--rule);border-radius:6px;overflow:clip}
+details.ch[open]{border-color:var(--ink)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:18px;align-items:center;padding:14px 18px}
+summary::-webkit-details-marker{display:none}
+.logo{width:52px;height:52px;border-radius:8px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:1.05rem;color:#fff;background:var(--lc,#333);letter-spacing:.02em;flex:none}
+.logo{position:relative}.logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;border-radius:8px;background:#fff;border:1px solid var(--rule)}
+.who h2{font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:800;font-stretch:110%}
+.who p{font-size:.88rem;color:var(--muted);margin-top:3px}
+.who .yr{font-family:var(--f-mono);font-size:.78rem;color:var(--ink)}
+.strip{display:flex;gap:6px}
+.strip img{width:84px;height:60px;object-fit:cover;border-radius:3px;display:block;background:var(--rule)}
+.chev{width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;transition:transform .2s}
+.chev::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-2px) rotate(45deg)}
+details[open] .chev{transform:rotate(180deg)}
+@media (max-width:900px){.strip img:nth-child(n+3){display:none}}
+@media (max-width:640px){summary{grid-template-columns:auto minmax(0,1fr) auto;gap:12px}.strip{display:none}.logo{width:44px;height:44px;font-size:.9rem}}
+.body{padding:4px 18px 22px;display:flex;flex-direction:column;gap:18px;border-top:1px solid var(--rule)}
+.lead{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px}
+.chip{font-size:.8rem;border:1px solid var(--rule);border-radius:3px;padding:4px 9px;color:var(--ink);background:var(--bg)}
+.chip.ms{border-color:var(--accent);background:var(--accent-soft)}
+.chip b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;margin-right:6px;color:var(--accent)}
+
+/* Photo grids */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:88px;gap:10px;grid-auto-flow:dense}
+.ph{position:relative;margin:0;border-radius:4px;overflow:hidden;background:var(--rule);cursor:zoom-in;border:0;padding:0;display:block;text-align:left}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.ph:hover img{transform:scale(1.03)}
+.ph.fit{background:#fff}
+.ph.fit img{object-fit:contain}
+.tag{position:absolute;left:8px;bottom:8px;right:8px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;pointer-events:none}
+.tag span{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;background:rgba(14,20,24,.82);color:#f3f5f6;padding:4px 7px;border-radius:2px;max-width:100%;line-height:1.3}
+.tag span.mine{background:var(--accent);color:#fff}
+.tag span.mine::before{content:"MY PART · "}
+.w12{grid-column:span 12}.w4{grid-column:span 4}.w5{grid-column:span 5}.w6{grid-column:span 6}.w7{grid-column:span 7}.w8{grid-column:span 8}.w3{grid-column:span 3}
+.h2{grid-row:span 2}.h3{grid-row:span 3}.h4{grid-row:span 4}.h5{grid-row:span 5}.h6{grid-row:span 6}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:120px}.grid>*{grid-column:span 2!important;grid-row:span 2!important}.grid>.half{grid-column:span 1!important}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.card{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--bg);text-decoration:none;color:var(--ink);transition:border-color .15s}
+.card:hover{border-color:var(--accent)}
+.card .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card b{font-family:var(--f-display);font-stretch:100%;font-size:1rem;line-height:1.25}
+.card span{font-size:.8rem;color:var(--muted);line-height:1.4}
+.sub{font-family:var(--f-display);font-size:1.05rem;font-weight:700;font-stretch:105%}
+.duo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.duo{grid-template-columns:1fr}}
+.stack{display:flex;flex-direction:column;gap:12px;min-width:0}
+
+/* Astera */
+.mission{font-family:var(--f-display);font-stretch:100%;font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:600;max-width:46ch;padding-top:14px;line-height:1.25}
+.mission em{font-style:normal;color:var(--accent)}
+.flow-frame{position:relative;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 8px 8px;min-width:0}
+.flow-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#flow{display:block;width:100%;min-width:960px;height:auto}
+#flow text{font-family:var(--f-body)}
+#flow .mono{font-family:var(--f-mono)}
+.lk{fill:none;transition:opacity .15s}
+.lk.sec{stroke-dasharray:3 4}
+#flow.focus .lk{opacity:.07!important}
+#flow.focus .lk.on{opacity:.85!important}
+#flow.focus .cn:not(.on) text{opacity:.45}
+.cn{cursor:pointer}
+.cn:focus:not(:focus-visible){outline:none}
+.cn:hover .lab{text-decoration:underline}
+.cn.sel .lab{font-weight:700}
+.card-link rect.bg{transition:stroke-width .15s}
+.card-link:hover rect.bg,.card-link:focus-visible rect.bg{stroke-width:2.5}
+.flow-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.75rem;color:var(--muted);padding:8px 6px 2px}
+.flow-legend span{display:inline-flex;align-items:center;gap:7px}
+.lg-solid{width:22px;border-top:6px solid var(--muted);opacity:.5}
+.lg-dash{width:22px;border-top:2px dashed var(--muted)}
+.lg-node{width:6px;height:12px;background:var(--muted)}
+.lg-hollow{width:6px;height:12px;border:1.5px solid var(--muted)}
+.lg-open{width:9px;height:9px;border-radius:50%;border:2px solid var(--muted)}
+.lg-fill{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.lg-target{width:18px;border-top:2px dashed var(--target)}
+.inspector{position:absolute;z-index:5;width:min(360px,calc(100% - 20px));background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:11px;box-shadow:0 12px 32px rgba(7,31,43,.2),0 2px 6px rgba(7,31,43,.08)}
+.inspector h3{font-size:1.25rem;font-stretch:95%}
+.inspector .hint{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.inspector .close{position:absolute;top:8px;right:8px;width:28px;height:28px;border:0;border-radius:4px;background:transparent;color:var(--muted);font-size:18px;line-height:1;cursor:pointer}
+.inspector .close:hover{background:var(--teal-soft);color:var(--ink)}
+.corr-chip{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;padding:3px 9px;border-radius:3px;border:1px solid var(--rule);align-self:flex-start;color:var(--ink);text-decoration:none}
+.corr-chip i{width:9px;height:9px;border-radius:2px}
+dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 14px;margin:0;font-size:.82rem}
+dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.out{border-top:1px solid var(--rule);padding-top:10px;display:flex;flex-direction:column;gap:8px}
+.out .row{display:flex;justify-content:space-between;gap:10px;font-size:.84rem}
+.out .row b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.supp{font-size:.8rem;color:var(--target)}
+.sens{display:flex;flex-wrap:wrap;gap:5px}
+.sens span{font-size:.74rem;background:var(--teal-soft);padding:2px 7px;border-radius:3px}
+.inspector .foot{font-size:.72rem;color:var(--muted);line-height:1.45}
+
+.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.tier{padding:12px 14px;border-left:1px solid var(--rule);display:flex;flex-direction:column;gap:4px;background:var(--bg)}
+.tier:first-child{border-left:0}
+.tier .n{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);letter-spacing:.06em}
+.tier b{font-family:var(--f-display);font-size:1.02rem}
+.tier p{font-size:.8rem;color:var(--muted);line-height:1.35}
+.tier .wacc{font-family:var(--f-mono);font-size:.72rem;color:var(--ink);margin-top:auto;padding-top:6px}
+.tier-bar{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--ink) var(--p),var(--rule) var(--p))}
+@media (max-width:760px){.tiers{grid-template-columns:repeat(2,minmax(0,1fr))}.tier:nth-child(3){border-left:0}.tier:nth-child(n+3){border-top:1px solid var(--rule)}}
+.chart-frame{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:18px max(14px,1.6vw) 14px}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px 16px}
+.panel h4{margin:0 0 4px;font-family:var(--f-display);font-size:.98rem;font-weight:700}
+.panel h4 span{font-family:var(--f-mono);font-size:.7rem;font-weight:400;color:var(--muted);display:block}
+.panel svg{width:100%;height:auto;display:block;overflow:visible}
+.chart-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:.78rem;color:var(--muted)}
+.chart-key span{display:inline-flex;align-items:center;gap:8px}
+.chart-key i{display:inline-block;width:18px;height:10px;border-radius:1px}
+.k-solid{background:var(--muted)}
+.k-hatch{background:repeating-linear-gradient(135deg,var(--c-bp) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1px var(--c-bp)}
+.k-target{border-top:2px dashed var(--target);height:0!important;width:22px!important}
+.verdict{display:flex;flex-wrap:wrap;gap:10px}
+.verdict div{flex:1 1 200px;border-top:2px solid var(--ink);padding-top:8px}
+.verdict b{font-family:var(--f-display);font-stretch:112%;font-size:1.6rem;font-weight:800;color:var(--accent);display:block;line-height:1.1}
+.verdict span{font-size:.82rem;color:var(--muted)}
+
+.earlier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:14px}
+.earlier div{border-left:3px solid var(--rule);padding-left:12px;display:flex;flex-direction:column;gap:3px}
+.earlier b{font-family:var(--f-display);font-size:1rem}
+.earlier span{font-size:.82rem;color:var(--muted)}
+@media (max-width:760px){.earlier{grid-template-columns:1fr}}
+
+footer{border-top:2px solid var(--ink);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;align-items:center}
+footer p{font-family:var(--f-display);font-size:1.2rem;font-weight:700}
+
+/* Embeds */
+.embed{display:flex;flex-direction:column;gap:6px;min-width:0}
+.embed iframe{width:100%;border:1px solid var(--rule);border-radius:4px;background:#fff;display:block}
+.embed .cap{display:flex;justify-content:space-between;gap:10px;font-size:.78rem;color:var(--muted)}
+.embed.tall iframe{height:min(760px,80vh)}
+.embed.med iframe{height:min(640px,75vh)}
+.embed.short{max-width:340px}
+.embed.short iframe{aspect-ratio:9/16;height:auto}
+.joby-media{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+@media (max-width:760px){.joby-media{grid-template-columns:1fr}}
+/* Lightbox */
+dialog#lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;width:auto}
+dialog#lb::backdrop{background:rgba(8,12,15,.88)}
+dialog#lb figure{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center}
+dialog#lb img{max-width:min(1200px,94vw);max-height:82vh;object-fit:contain;border-radius:4px;background:#fff}
+dialog#lb figcaption{font-family:var(--f-mono);font-size:.8rem;color:#e9eef1;text-align:center}
+dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:22px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="title">
+    <div>
+      <p class="eyebrow">Project portfolio</p>
+      <h1>Mallory Snowden</h1>
+      <p class="role">Systems engineer · flight hardware to fusion techno-economics</p>
+    </div>
+    <nav class="links" aria-label="Contact and profiles">
+      <a href="https://linkedin.com/in/mallory-snowden-b4357339/">LinkedIn ↗</a>
+      <a href="https://github.com/mallorysnowden">GitHub ↗</a>
+      <a href="https://1cf.energy/">1cf.energy ↗</a>
+      <button type="button" id="copy-email">msnowden729@gmail.com</button>
+    </nav>
+  </header>
+
+
+  <p class="note"><i></i><span>Every component tagged <b>My part</b> is one I designed or developed. CAD and drawings are proprietary, so the work is shown through public photos and published figures. Click any photo to enlarge.</span></p>
+
+  <div class="timeline" aria-label="Career timeline"><div class="tl-track" id="tl"></div></div>
+
+  <div class="chapters">
+
+    <!-- ASTERA -->
+    <details class="ch" id="astera">
+      <summary>
+        <span class="logo" style="--lc:#0b3a4a">AI<img src="https://www.google.com/s2/favicons?domain=astera.org&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>Astera Institute</h2><p>Systems Engineering Lead · 1¢/kWh fusion residency · <span class="yr">2025–2026</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/astera-thumb-flow.svg" alt=""><img src="img/astera-thumb-bars.svg" alt=""></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <p class="mission">Could fusion electricity ever cost <em>one cent per kWh</em>? We worked backwards from that target to find what would have to be true.</p>
+        <div class="verdict">
+          <div><b>38 → 6 → 2</b><span>concepts → corridors → routes under 1¢</span></div>
+          <div><b>$29/MWh</b><span>D-T plant cost even with a free fusion core</span></div>
+          <div><b>29 of 38</b><span>concepts most sensitive to plant availability</span></div>
+        </div>
+
+        <p class="sub">Down-selection · click a concept for its ontology, a corridor for its study</p>
+        <div class="flow-frame">
+          <div class="flow-scroll"><svg id="flow" role="img" aria-label="Flow from 38 fusion concepts to six corridors, the designs studied, and their LCOE range"></svg></div>
+          <div class="flow-legend">
+            <span><i class="lg-solid"></i>Primary corridor</span>
+            <span><i class="lg-dash"></i>Host-plant candidate, byproduct overlay</span>
+            <span><i class="lg-node"></i>Published design point</span>
+            <span><i class="lg-hollow"></i>No design point (LCOE suppressed)</span>
+            <span><i class="lg-open"></i>Tier 0</span>
+            <span><i class="lg-fill"></i>Tier 3</span>
+            <span><i class="lg-target"></i>1¢/kWh</span>
+          </div>
+          <aside class="inspector" id="inspector" role="dialog" aria-label="Concept details" hidden></aside>
+        </div>
+
+        <p class="sub">Evidence tiers · each design re-priced four times</p>
+        <div class="tiers">
+          <div class="tier"><span class="n">TIER 0</span><b>Design basis</b><p>The developer's own published design point</p><span class="wacc">7% capital · own build time · 30 yr</span></div>
+          <div class="tier"><span class="n">TIER 1</span><b>Records</b><p>Only what has been demonstrated somewhere</p><span class="wacc">7% · 5 yr build · 60 yr life</span></div>
+          <div class="tier"><span class="n">TIER 2</span><b>Extrapolation</b><p>Improvements with a known mechanism</p><span class="wacc">5% · 3.25 yr · 80 yr</span></div>
+          <div class="tier"><span class="n">TIER 3</span><b>Speculation</b><p>No known mechanism yet; a bound, not a forecast</p><span class="wacc">3% · 2.5 yr · 80 yr</span></div>
+        </div>
+        <div class="chart-frame">
+          <p class="eyebrow" style="margin-bottom:12px">LCOE, $/MWh at 1 GWe · each panel on its own scale · dashed line = 1¢/kWh</p>
+          <div class="panels" id="panels"></div>
+          <div class="chart-key">
+            <span><i class="k-solid"></i>Cost of electricity</span>
+            <span><i class="k-hatch"></i>Price after gold revenue</span>
+            <span><i class="k-target"></i>1¢/kWh target</span>
+          </div>
+        </div>
+
+        <p class="sub">Tools I built · live</p>
+        <div class="embed tall"><iframe src="https://1cf.energy/tools/scoring/" title="Scoring Explorer" loading="lazy"></iframe><span class="cap"><span>Scoring Explorer · re-weight the criteria and re-rank 38 concepts</span><a href="https://1cf.energy/tools/scoring/">Open full screen ↗</a></span></div>
+        <div class="embed tall"><iframe src="https://1cf.energy/tools/ai/" title="AI Lever Console" loading="lazy"></iframe><span class="cap"><span>AI Lever Console · how AI-driven improvements move a mature tokamak's cost</span><a href="https://1cf.energy/tools/ai/">Open full screen ↗</a></span></div>
+        <div class="duo">
+          <div class="stack">
+            <p class="sub">Tools I built</p>
+            <div class="cards">
+              <a class="card" href="https://1cf.energy/tools/scoring/"><span class="k">Interactive tool</span><b>Scoring Explorer ↗</b><span>Re-weight the criteria and re-rank 38 concepts</span></a>
+              <a class="card" href="https://1cf.energy/tools/ai/"><span class="k">Interactive tool</span><b>AI Lever Console ↗</b><span>How AI-driven improvements move a mature tokamak's cost</span></a>
+              <a class="card" href="https://concepts.1cf.energy/"><span class="k">Pipeline output</span><b>Concept Explorer ↗</b><span>Every concept's sources, costs and sensitivities</span></a>
+            </div>
+          </div>
+          <div class="stack">
+            <p class="sub">Posts I wrote</p>
+            <div class="cards">
+              <a class="card" href="https://1cf.energy/from-papers-to-plant-economics/"><span class="k">Jun 2026</span><b>From Papers to Plant Economics ↗</b></a>
+              <a class="card" href="https://1cf.energy/most-mature-corridor/"><span class="k">Sep 2026</span><b>The Most-Mature Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/pulsed-plant-corridor/"><span class="k">Sep 2026</span><b>The Pulsed-Plant Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/byproduct-value-corridor/"><span class="k">Sep 2026</span><b>The Byproduct-Value Corridor ↗</b></a>
+              <a class="card" href="https://1cf.energy/space-vs-fusion-sector/"><span class="k">May 2026</span><b>Space Sector vs. Fusion Sector ↗</b></a>
+              <a class="card" href="https://1cf.energy/the-unsolved-engineering-behind-fusion-power/"><span class="k">Mar 2026</span><b>The Unsolved Engineering Behind Fusion Power ↗</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- IMPERIAL -->
+    <details class="ch" id="imperial">
+      <summary>
+        <span class="logo" style="--lc:#1d3a8a">IC<img src="https://www.google.com/s2/favicons?domain=imperial.ac.uk&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>Imperial College London</h2><p>MSc Sustainable Energy Futures · Distinction · <span class="yr">2024–2025</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/imperial-poster.jpg" alt="" style="object-position:top"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="duo" style="padding-top:14px">
+          <button class="ph fit" style="aspect-ratio:1390/1907" data-cap="Master's thesis poster · techno-economics of energy storage in Arctic grids"><img src="img/imperial-poster.jpg" alt="Master's thesis poster: A techno-economic assessment of energy storage potential in Arctic grid systems" loading="lazy"><span class="tag"><span class="mine">Thesis poster</span></span></button>
+          <div class="stack">
+            <p class="sub">A Technoeconomic Assessment of Energy Storage Potential in Arctic Grid Systems</p>
+            <div class="lead" style="padding-top:0"><span class="chip"><b>LCOS</b>batteries · flywheels · pumped hydro · hydrogen · pumped thermal</span><span class="chip"><b>GPA</b>4.00</span></div>
+            <div class="cards">
+              <a class="card" href="https://mallorysnowden.github.io/Storage-LCOS-Calculator/"><span class="k">Interactive tool</span><b>Storage LCOS Calculator ↗</b><span>Compare levelized storage costs across technologies</span></a>
+              <a class="card" href="https://github.com/mallorysnowden/Storage-LCOS-Calculator"><span class="k">Source</span><b>Calculator on GitHub ↗</b><span>Python model behind the tool</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="embed tall"><iframe src="https://mallorysnowden.github.io/Storage-LCOS-Calculator/" title="Storage LCOS Calculator" loading="lazy"></iframe><span class="cap"><span>Storage LCOS Calculator · live</span><a href="https://mallorysnowden.github.io/Storage-LCOS-Calculator/">Open full screen ↗</a></span></div>
+      </div>
+    </details>
+
+    <!-- JOBY -->
+    <details class="ch" id="joby">
+      <summary>
+        <span class="logo" style="--lc:#14171a">JA<img src="https://www.google.com/s2/favicons?domain=jobyaviation.com&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>Joby Aviation</h2><p>Senior Actuated Systems Design Engineer · <span class="yr">2020–2024</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/joby-wind-tunnel.jpg" alt=""><img src="img/joby-actuator.jpg" alt=""><img src="img/joby-patent-fig2.png" alt="" style="background:#fff;object-fit:contain"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="lead">
+          <span class="chip ms"><b>RE</b>Responsible engineer, propeller blade-pitch actuation: design → qualification → mass production</span>
+          <span class="chip"><b>PATENT</b>Compact blade-pitch mechanism, co-inventor</span>
+        </div>
+        <div class="grid">
+          <button class="ph fit w4 h4" data-cap="Patent figure · compact blade-pitch mechanism, top view"><img src="img/joby-patent-fig1.png" alt="Patent drawing of the blade-pitch mechanism, top view" loading="lazy"><span class="tag"><span class="mine">Patent fig.</span></span></button>
+          <button class="ph fit w4 h4" data-cap="Patent figure · compact blade-pitch mechanism, isometric"><img src="img/joby-patent-fig2.png" alt="Patent drawing of the blade-pitch mechanism, isometric view" loading="lazy"><span class="tag"><span class="mine">Patent fig.</span></span></button>
+          <button class="ph fit w4 h4" data-cap="Patent figure · compact blade-pitch mechanism, section"><img src="img/joby-patent-fig3.png" alt="Patent drawing of the blade-pitch mechanism, section view" loading="lazy"><span class="tag"><span class="mine">Patent fig.</span></span></button>
+          <button class="ph w8 h4" data-cap="Wind tunnel testing at NASA Ames, 2023"><img src="img/joby-wind-tunnel.jpg" alt="Joby propeller on a test stand in the NASA Ames wind tunnel" loading="lazy"><span class="tag"><span>NASA Ames wind tunnel · 2023</span></span></button>
+          <button class="ph w4 h4" data-cap="Variable-pitch actuator"><img src="img/joby-actuator.jpg" alt="Variable-pitch actuator on a test fixture" loading="lazy"><span class="tag"><span class="mine">Variable-pitch actuator</span></span></button>
+        </div>
+        <div class="joby-media">
+          <div class="cards">
+          <a class="card" href="https://patents.google.com/patent/WO2025106122A2/en?q=(compact+blade+pitch+aircraft)&amp;inventor=mallory+snowden&amp;assignee=joby"><span class="k">Patent</span><b>Compact Blade Pitch Actuation ↗</b><span>WO2025106122A2 · Google Patents</span></a>
+          <a class="card" href="https://www.youtube.com/shorts/z9W2qjyFOnE"><span class="k">Video</span><b>Variable-pitch actuator, behind the scenes ↗</b><span>YouTube short</span></a>
+        </div>
+          <div class="embed short"><iframe src="https://www.youtube.com/embed/z9W2qjyFOnE" title="Variable-pitch actuator, behind the scenes" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span class="cap">Variable-pitch actuator · behind the scenes</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ASTRA -->
+    <details class="ch" id="astra">
+      <summary>
+        <span class="logo" style="--lc:#2b2f36">AS<img src="https://www.google.com/s2/favicons?domain=astra.com&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>Astra Space</h2><p>Propulsion Engineer → First Stage System Test Lead · <span class="yr">2018–2020</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/astra-tvc-installed.jpg" alt=""><img src="img/astra-aft-end.jpg" alt=""><img src="img/astra-engine-valves.jpg" alt=""></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="lead">
+          <span class="chip ms"><b>ORBIT</b>Rocket 3 reached orbit, Nov 2021</span>
+          <span class="chip"><b>MODEL</b>Engine operating points optimized for minimum battery mass</span>
+          <span class="chip"><b>LEAD</b>8-person upper-stage fluid-system audit</span>
+        </div>
+        <div class="grid">
+          <button class="ph w4 h6" data-cap="Engine with my main oxygen and fuel valves"><img src="img/astra-engine-valves.jpg" alt="Rocket engine on a stand with main oxygen and fuel valves" loading="lazy"><span class="tag"><span class="mine">Main LOX &amp; fuel valves</span></span></button>
+          <button class="ph w8 h4" data-cap="Upper-stage thrust vector control actuators, installed"><img src="img/astra-tvc-installed.jpg" alt="Gold thrust vector control actuators installed on the upper-stage engine" loading="lazy"><span class="tag"><span class="mine">Upper-stage TVC actuators</span></span></button>
+          <button class="ph w8 h2" data-cap="Upper-stage TVC actuator on the bench"><img src="img/astra-tvc-bench.jpg" alt="Thrust vector control actuator on a workbench" loading="lazy" style="object-position:center 40%"><span class="tag"><span class="mine">TVC actuator</span></span></button>
+          <button class="ph w5 h4" data-cap="Rocket 3 aft end, base heat shield removed"><img src="img/astra-aft-end.jpg" alt="Rocket 3 aft end showing five engines" loading="lazy"><span class="tag"><span>Rocket 3 aft end</span></span></button>
+          <button class="ph w7 h4" data-cap="Aft section after a successful leak check"><img src="img/astra-aft-leakcheck.jpg" alt="Mallory and teammates beside the aft section after a leak check" loading="lazy"><span class="tag"><span>After a successful leak check</span></span></button>
+          <button class="ph fit w7 h4" data-cap="Cryogenic leak-check rig · piping and instrumentation diagram"><img src="img/astra-leak-rig-pid.jpg" alt="Piping and instrumentation diagram of the cryogenic leak-check rig" loading="lazy"><span class="tag"><span class="mine">Cryo leak-check rig · P&amp;ID</span></span></button>
+          <button class="ph w5 h4" data-cap="The leak-check rig in use by my intern, Sarah"><img src="img/astra-leak-rig-intern.jpg" alt="Intern operating the leak-check rig panel" loading="lazy" style="object-position:center 30%"><span class="tag"><span class="mine">Leak-check rig in use</span></span></button>
+        </div>
+      </div>
+    </details>
+
+    <!-- BLUE ORIGIN -->
+    <details class="ch" id="blue">
+      <summary>
+        <span class="logo" style="--lc:#1f3c88">BO<img src="https://www.google.com/s2/favicons?domain=blueorigin.com&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>Blue Origin</h2><p>Propulsion Development &amp; Structural Design Engineer · <span class="yr">2013–2018</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/bo-be4-closeup.jpg" alt=""><img src="img/bo-drogue-cover.jpg" alt=""><img src="img/bo-spin-start-rig.jpg" alt=""></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="lead">
+          <span class="chip ms"><b>LANDED</b>New Shepard: first booster to land vertically after reaching space, Nov 2015</span>
+          <span class="chip"><b>TRADE</b>New Glenn aft thrust structure for seven BE-4s, presented to executives</span>
+        </div>
+        <div class="grid">
+          <button class="ph w5 h6" data-cap="BE-4 engine · main fuel valve"><img src="img/bo-be4-standing.jpg" alt="Mallory standing beside a BE-4 engine" loading="lazy"><span class="tag"><span class="mine">BE-4 main fuel valve</span></span></button>
+          <button class="ph w7 h4" data-cap="BE-4 boost pump · I led the dynamometer characterization tests"><img src="img/bo-be4-closeup.jpg" alt="Close-up of BE-4 engine turbomachinery" loading="lazy" style="object-position:center 35%"><span class="tag"><span class="mine">Boost pump · dyno test lead</span></span></button>
+          <button class="ph w7 h2" data-cap="Turbopump spin-start subsystem testing"><img src="img/bo-spin-start-rig.jpg" alt="Spin-start test hardware in a test cell" loading="lazy"><span class="tag"><span class="mine">Spin-start testing</span></span></button>
+          <button class="ph w12 h5" data-cap="New Shepard drogue parachute cover · the capsule nose ring was also mine (not pictured)"><img src="img/bo-drogue-cover.jpg" alt="Mallory inspecting a drogue parachute cover with the New Shepard capsule behind" loading="lazy" style="object-position:center 40%"><span class="tag"><span class="mine">New Shepard drogue parachute cover</span><span>Capsule nose ring also mine · not pictured</span></span></button>
+        </div>
+      </div>
+    </details>
+
+    <!-- EARLIER -->
+    <details class="ch" id="earlier">
+      <summary>
+        <span class="logo" style="--lc:#4a5560">PRE</span>
+        <span class="who"><h2>Earlier</h2><p>L3Harris · NASA Langley · Lehigh University · <span class="yr">2007–2013</span></p></span>
+        <span class="strip" aria-hidden="true"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="earlier">
+          <div><b>L3Harris · Thermal-Mechanical Engineer</b><span>On-orbit thermal and optical performance for NASA, DoD and commercial satellites, including picometer-stability feasibility for a gravitational-wave observatory.</span></div>
+          <div><b>NASA Langley · Research Intern</b><span>Composites for the Ares V shroud; wrote a MATLAB cure-kinetics tool.</span></div>
+          <div><b>Lehigh University · BS Mechanical Engineering</b><span>Aerospace minor, High Honors.</span></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <footer>
+    <nav class="links"><a href="https://linkedin.com/in/mallory-snowden-b4357339/">LinkedIn ↗</a><a href="https://github.com/mallorysnowden">GitHub ↗</a><a href="https://1cf.energy/">1cf.energy ↗</a></nav>
+  </footer>
+</div>
+
+<dialog id="lb" aria-label="Enlarged photo"><button type="button" aria-label="Close">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
+
+<script>
+// Timeline, chapter navigation, lightbox, email copy
+(function(){
+  var T0=2007, T1=2027;
+  var items=[
+    {id:'earlier',l:'Lehigh',a:2007.6,b:2011.4,c:'edu'},
+    {id:'earlier',l:'L3Harris',a:2011.5,b:2013.4},
+    {id:'blue',l:'Blue Origin',a:2013.5,b:2018.05},
+    {id:'astra',l:'Astra',a:2018.1,b:2020.45},
+    {id:'joby',l:'Joby',a:2020.5,b:2024.45},
+    {id:'imperial',l:'Imperial',a:2024.7,b:2025.7,c:'edu'},
+    {id:'astera',l:'Astera',a:2025.9,b:2026.8,c:'now'}
+  ];
+  var tl=document.getElementById('tl');
+  function pct(y){return ((y-T0)/(T1-T0)*100)+'%';}
+  var ax=document.createElement('div'); ax.className='tl-axis'; tl.appendChild(ax);
+  items.forEach(function(it){
+    var s=document.createElement('button'); s.type='button'; s.className='tl-seg'+(it.c?' '+it.c:'');
+    s.style.left=pct(it.a); s.style.width='calc('+pct(it.b)+' - '+pct(it.a)+')'; s.setAttribute('aria-label','Open '+it.l);
+    s.addEventListener('click',function(){openCh(it.id);}); tl.appendChild(s);
+    var l=document.createElement('button'); l.type='button'; l.className='tl-label'; l.textContent=it.l; l.style.left=pct((it.a+it.b)/2); l.tabIndex=-1;
+    l.addEventListener('click',function(){openCh(it.id);}); tl.appendChild(l);
+  });
+  [2010,2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
+  function openCh(id){var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'});}
+  if(location.hash){var d=document.getElementById(location.hash.slice(1)); if(d&&d.tagName==='DETAILS') d.open=true;}
+
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('figcaption');
+  document.querySelectorAll('.ph').forEach(function(b){
+    b.addEventListener('click',function(){
+      var im=b.querySelector('img'); lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent=b.getAttribute('data-cap')||'';
+      try{lb.showModal();}catch(e){lb.setAttribute('open','');}
+    });
+  });
+  lb.querySelector('button').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){if(e.target===lb) lb.close();});
+
+  var eb=document.getElementById('copy-email');
+  eb.addEventListener('click',function(){
+    var t='msnowden729@gmail.com', done=function(){var o=eb.textContent; eb.textContent='Copied'; setTimeout(function(){eb.textContent=o;},1400);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){sel();});} else sel();
+    function sel(){var r=document.createRange(); r.selectNodeContents(eb); var s=getSelection(); s.removeAllRanges(); s.addRange(r);}
+  });
+})();
+</script>
+<script>
+(function(){
+var CONCEPTS=[{"id":"01","name":"HTS Compact Tokamak (D-T)","company":"Commonwealth Fusion Systems","fuel":"DT","fam":"MFE","topo":"Tokamak","capture":"Thermal (steam)","magnet":"HTS (wound)","blanket":"Molten salt","mode":"Quasi-steady","rep":null,"driver":"HTS magnets (REBCO, 20 T)","heating":"RF (ICRH)","conf":"high","lcoe":107.6,"okw":6966,"q":7.9,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"02","name":"Acoustic ICF / Sonofusion (D-D)","company":"Sonofusion Energy","fuel":"DD","fam":"IFE","topo":"Acoustic","capture":null,"magnet":null,"blanket":null,"mode":"Pulsed","rep":"kHz","driver":"Ultrasonic transducers (acoustic cavitation)","heating":"Acoustic implosion","conf":"low","lcoe":99.5,"okw":5523,"q":4.0,"grounded":false,"aster":false,"model":"standalone","top":["eta_th","Q_sci","M_blanket"]},{"id":"03","name":"Laser ICF - Liquid Jet Target (D-D)","company":"Cortex Fusion","fuel":"DD","fam":"IFE","topo":"Laser","capture":null,"magnet":null,"blanket":null,"mode":"Pulsed","rep":"kHz","driver":"Femtosecond laser + plasmonic nanoshell targets","heating":"Laser (ultrashort pulse)","conf":"low","lcoe":37452.5,"okw":383083,"q":55.6,"grounded":false,"aster":false,"model":"standalone","top":["nanoshell_outer_radius_nm","nanoshell_inner_radius_nm","kappa"]},{"id":"04","name":"Laser ICF (p-B11)","company":"hb11","fuel":"PB11","fam":"IFE","topo":"Laser","capture":"Thermal (steam)","magnet":null,"blanket":null,"mode":"Pulsed","rep":"~1 Hz","driver":"Petawatt ps CPA laser + laser-driven kT field","heating":"Laser (fast ignition)","conf":"medium","lcoe":92.5,"okw":2847,"q":4.0,"grounded":true,"aster":true,"model":"costingfe","top":["target_unit_cost","f_rep","availability"]},{"id":"05","name":"Planar Coil Stellarator (D-T)","company":"Thea Energy","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (steam)","magnet":"HTS (planar array)","blanket":"Liquid metal","mode":"Steady-state","rep":null,"driver":"Planar HTS coil array (12 encircling + 324 shaping, 20 T, software-controlled)","heating":"RF (ECRH)","conf":"high","lcoe":265.1,"okw":19357,"q":7.6,"grounded":true,"aster":false,"model":"costingfe","top":["interest_rate","availability","R0"]},{"id":"06","name":"Magnetic Mirror (p-B11)","company":"Pale Blue","fuel":"PB11","fam":"MFE","topo":"Open/Linear","capture":"Direct (charged particle)","magnet":null,"blanket":null,"mode":"Steady-state","rep":null,"driver":"Centrifugal mirror with alpha channeling (RF waves, E\u00d7B rotation, ponderomotive barriers)","heating":"RF (ICRH)","conf":"medium","lcoe":129.5,"okw":10726,"q":2.2,"grounded":false,"aster":true,"model":"costingfe","top":["availability","interest_rate","plasma_t"]},{"id":"07","name":"MagLIF (D-T)","company":"Pacific Fusion","fuel":"DT","fam":"MIF","topo":"Magnetized target","capture":"Thermal (unspecified)","magnet":null,"blanket":null,"mode":"Pulsed","rep":"Sub-Hz","driver":"Pulsed power (Z-machine class)","heating":"Pulsed power implosion","conf":"medium-high","lcoe":138.1,"okw":7862,"q":3.0,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"08","name":"FRC w/ Direct Conversion (D-He3)","company":"Helion Energy","fuel":"DHe3","fam":"MIF","topo":"FRC compression","capture":"Direct (inductive)","magnet":"Resistive","blanket":"Other/hybrid","mode":"Pulsed","rep":"~1 Hz","driver":"Pulsed EM coils (capacitor bank)","heating":"Magnetic compression","conf":"high","lcoe":198.1,"okw":5060,"q":4.0,"grounded":true,"aster":false,"model":"costingfe","top":["fuel_recovery","eta_dec","availability"]},{"id":"09","name":"QI Stellarator - HTS (D-T)","company":"Proxima Fusion","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (unspecified)","magnet":"HTS (3D stellarator)","blanket":"Liquid metal","mode":"Steady-state","rep":null,"driver":"3D HTS stellarator coils (REBCO, 20 T)","heating":"RF (ECRH)","conf":"medium","lcoe":164.9,"okw":11015,"q":6.9,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","R0"]},{"id":"10","name":"Large-Scale Stellarator (D-T)","company":"Gauss Fusion","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (unspecified)","magnet":"LTS+HTS","blanket":"Liquid metal","mode":"Steady-state","rep":null,"driver":"Non-planar modular SC coils (LTS+HTS, 40 coils, 6T axis / 12-13T peak, demountable)","heating":"RF (ECRH)","conf":"medium","lcoe":261.4,"okw":18854,"q":5.5,"grounded":true,"aster":false,"model":"costingfe","top":["interest_rate","availability","R0"]},{"id":"11","name":"Magnetic Mirror (D-T)","company":"Realta Fusion","fuel":"DT","fam":"MFE","topo":"Open/Linear","capture":"Hybrid (thermal + direct)","magnet":"HTS (wound)","blanket":"Liquid metal","mode":"Steady-state","rep":null,"driver":"HTS mirror magnets (REBCO, 17+ T) + NBI + ECH","heating":"RF + NBI","conf":"medium-high","lcoe":278.8,"okw":22230,"q":1.5,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"12","name":"Levitated Dipole (D-T)","company":"OpenStar Technologies","fuel":"DT","fam":"MFE","topo":"Dipole","capture":"Thermal (unspecified)","magnet":"HTS (levitated dipole)","blanket":"Solid breeder","mode":"Quasi-steady","rep":null,"driver":"Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump","heating":"RF (ICRH)","conf":"high","lcoe":239.9,"okw":19081,"q":2.9,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","plasma_t"]},{"id":"13","name":"Electrostatic Hybrid (D-T)","company":"Avalanche Energy","fuel":"DT","fam":"NONSTANDARD","topo":"Electrostatic","capture":"Thermal (unspecified)","magnet":"Electrostatic","blanket":null,"mode":"Steady-state","rep":null,"driver":"High-voltage electrostatic cathode (300 kV) with E\u00d7B electron co-confinement","heating":"Electrostatic acceleration","conf":"medium-low","lcoe":40.9,"okw":3354,"q":13.1,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"14","name":"Magnetized Target Fusion - Pneumatic Compression (D-T)","company":"General Fusion","fuel":"DT","fam":"MIF","topo":"Magnetized target","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~1 Hz","driver":"Pneumatic pistons + liquid metal","heating":"Mechanical compression","conf":"high","lcoe":52.9,"okw":3580,"q":3.0,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"15","name":"Sheared-Flow Stabilized Z-Pinch (D-T)","company":"Zap Energy","fuel":"DT","fam":"MFE","topo":"Open/Linear","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"Pulsed power (sheared-flow Z-pinch)","heating":"Ohmic (self-pinch)","conf":"high","lcoe":60.1,"okw":3840,"q":3.0,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"16","name":"Muon-Catalyzed Fusion (D-T)","company":"Acceleron Fusion","fuel":"DT","fam":"NONSTANDARD","topo":"Muon-catalyzed","capture":"Thermal (unspecified)","magnet":null,"blanket":null,"mode":"Steady-state","rep":null,"driver":"Muon source (accelerator)","heating":"Muon catalysis","conf":"medium","lcoe":2068.2,"okw":111628,"q":2.8,"grounded":false,"aster":false,"model":"standalone","top":["eta_th","M_blanket","n_fus_per_muon"]},{"id":"17a","name":"Laser ICF - Hybrid Direct Drive (D-T)","company":"Xcimer Energy","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Thermal (unspecified)","magnet":null,"blanket":"Molten salt","mode":"Pulsed","rep":"Sub-Hz","driver":"Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)","heating":"Laser (direct drive)","conf":"medium-high","lcoe":91.7,"okw":6511,"q":5.5,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"17b","name":"Laser ICF - Direct Drive Fast Ignition (D-T)","company":"Focused Energy","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"DPSSL (Nd:glass, 527 nm) + petawatt CPA ignition laser","heating":"Laser (fast ignition)","conf":"medium","lcoe":130.8,"okw":4926,"q":4.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","target_unit_cost"]},{"id":"18","name":"p-B11 FRC (p-B11)","company":"TAE Technologies","fuel":"PB11","fam":"MFE","topo":"Compact Toroid","capture":"Thermal (steam)","magnet":"Resistive","blanket":null,"mode":"Steady-state","rep":null,"driver":"Neutral beam injection (high-energy, tangential)","heating":"NBI","conf":"high","lcoe":369.5,"okw":31339,"q":1.2,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"19","name":"Orbital Levitated Dipole (D-He3)","company":"Zephyr Fusion","fuel":"DHe3","fam":"MFE","topo":"Dipole","capture":"Direct (charged particle)","magnet":"HTS (levitated dipole)","blanket":null,"mode":"Steady-state","rep":null,"driver":"Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)","heating":"RF (ECRH)","conf":"low","lcoe":369.3,"okw":29848,"q":2.0,"grounded":false,"aster":false,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"20a","name":"Type One Stellarator (D-T)","company":"Type One Energy","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (steam)","magnet":"HTS (3D stellarator)","blanket":"Solid breeder","mode":"Steady-state","rep":null,"driver":"Modular HTS stellarator coils (REBCO, 9 T)","heating":"RF (ECRH)","conf":"high","lcoe":338.9,"okw":25018,"q":4.9,"grounded":true,"aster":false,"model":"costingfe","top":["interest_rate","availability","R0"]},{"id":"20b","name":"Renaissance Stellarator (D-T)","company":"Renaissance Fusion","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (sCO2)","magnet":"HTS (3D stellarator)","blanket":"Other/hybrid","mode":"Steady-state","rep":null,"driver":"Laser-patterned HTS film on cylinders (REBCO, 10-15 T)","heating":"NBI","conf":"high","lcoe":95.5,"okw":4974,"q":14.1,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"21","name":"Spherical Tokamak - HTS (D-T)","company":"Tokamak Energy","fuel":"DT","fam":"MFE","topo":"Tokamak","capture":"Thermal (unspecified)","magnet":"HTS (wound)","blanket":"Liquid metal","mode":"Quasi-steady","rep":null,"driver":"HTS magnets (REBCO, 5.25 T on-axis)","heating":"RF (ECRH)","conf":"medium","lcoe":141.6,"okw":10252,"q":7.0,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","R0"]},{"id":"22","name":"Projectile ICF (D-T)","company":"First Light Fusion","fuel":"DT","fam":"IFE","topo":"Projectile","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"Sub-Hz","driver":"Electromagnetic gun","heating":"Projectile impact","conf":"medium-high","lcoe":90.8,"okw":5920,"q":4.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"23","name":"Laser ICF - Nanostructured Target (p-B11)","company":"Marvel Fusion","fuel":"PB11","fam":"IFE","topo":"Laser","capture":"Hybrid (thermal + direct)","magnet":null,"blanket":null,"mode":"Pulsed","rep":"~10 Hz","driver":"Femtosecond DPSSL + nanostructured Si targets (nanowire arrays, semiconductor lithography)","heating":"Laser (ultrashort pulse)","conf":"medium-high","lcoe":387.7,"okw":5583,"q":4.0,"grounded":true,"aster":false,"model":"costingfe","top":["f_rep","target_unit_cost","inflation_rate"]},{"id":"24","name":"Dense Plasma Focus (p-B11)","company":"LPPFusion","fuel":"PB11","fam":"NONSTANDARD","topo":"Plasma focus","capture":"Direct (charged particle)","magnet":null,"blanket":null,"mode":"Pulsed","rep":"High (>10 Hz)","driver":"Pulsed coaxial electrodes (capacitor bank, 2.7 MA)","heating":"Electromagnetic pinch (DPF)","conf":"medium","lcoe":234.8,"okw":20164,"q":3.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"25","name":"Heavy Ion Beam ICF (D-T)","company":"Intensity Energy","fuel":"DT","fam":"IFE","topo":"Heavy ion beam","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"Linear induction accelerator","heating":"Heavy ion beam","conf":"medium","lcoe":98.6,"okw":5399,"q":4.0,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","construction_time_yr"]},{"id":"26","name":"Laser ICF - Indirect Drive (D-T)","company":"Inertia Enterprises","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"DPSSL (Thunderwall, 10 kJ x 1000+ beamlines, 10 Hz, 3w UV)","heating":"Laser (indirect drive)","conf":"medium-high","lcoe":105.4,"okw":5103,"q":4.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","q_eng"]},{"id":"27","name":"Polywell (D-T)","company":"EMC2","fuel":"DT","fam":"NONSTANDARD","topo":"Electrostatic","capture":"Thermal (unspecified)","magnet":"Resistive","blanket":null,"mode":"Steady-state","rep":null,"driver":"Polyhedral magnetic cusp coils + electron beam injection","heating":"Electrostatic acceleration","conf":"medium","lcoe":60.7,"okw":3148,"q":8.0,"grounded":true,"aster":false,"model":null,"top":["plant_availability","thermal_efficiency","p_fus_MW"]},{"id":"28","name":"HTS Tokamak - Full HTS (D-T)","company":"Energy Singularity","fuel":"DT","fam":"MFE","topo":"Tokamak","capture":"Thermal (unspecified)","magnet":"HTS (wound)","blanket":null,"mode":"Steady-state","rep":null,"driver":"HTS magnets (REBCO, 25 T)","heating":"RF (ICRH)","conf":"medium","lcoe":104.6,"okw":5875,"q":5.1,"grounded":false,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"29","name":"Negative Triangularity Tokamak (D-T)","company":"Firefly Fusion","fuel":"DT","fam":"MFE","topo":"Tokamak","capture":"Thermal (unspecified)","magnet":"HTS (wound)","blanket":null,"mode":"Quasi-steady","rep":null,"driver":"HTS magnets + NT plasma shaping","heating":"RF (ECRH)","conf":"medium","lcoe":139.5,"okw":9760,"q":7.8,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"30","name":"Laser ICF - NIF Commercialization (D-T)","company":"Inertia Enterprises","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Thermal (steam)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"Diode-pumped solid-state laser (DPSSL, 10 MJ, ~1000 beamlines)","heating":"Laser (indirect drive)","conf":"medium-high","lcoe":100.5,"okw":4926,"q":4.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","target_unit_cost"]},{"id":"31","name":"Laser ICF - OEC Architecture (D-T)","company":"Blue Laser Fusion","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Hybrid (thermal + direct)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"CBC fiber laser + OEC, 5 MJ UV","heating":"Laser (direct drive)","conf":"medium-high","lcoe":193.0,"okw":10357,"q":1.7,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","eta_th"]},{"id":"32","name":"Laser ICF - French National (D-T)","company":"GenF Systems","fuel":"DT","fam":"IFE","topo":"Laser","capture":"Thermal (unspecified)","magnet":null,"blanket":"Liquid metal","mode":"Pulsed","rep":"~10 Hz","driver":"Diode-pumped solid-state laser (DPSSL)","heating":"Laser (direct drive)","conf":"medium","lcoe":88.2,"okw":4108,"q":8.0,"grounded":true,"aster":true,"model":"costingfe","top":["availability","interest_rate","f_rep"]},{"id":"33","name":"State-Backed Tokamak - BEST (D-T)","company":"Neo Fusion","fuel":"DT","fam":"MFE","topo":"Tokamak","capture":"Thermal (unspecified)","magnet":"LTS+HTS","blanket":null,"mode":"Quasi-steady","rep":null,"driver":"LTS+HTS magnets (Nb3Sn/YBCO, 6.15T) + multi-method H&CD (50 MW)","heating":"RF + NBI","conf":"medium","lcoe":149.7,"okw":10949,"q":7.6,"grounded":true,"aster":false,"model":"costingfe","top":["availability","interest_rate","R0"]},{"id":"34","name":"Compact Spherical Tokamak - India","company":"Pranos Fusion","fuel":"DT","fam":"MFE","topo":"Tokamak (spherical)","capture":null,"magnet":"HTS (wound)","blanket":null,"mode":"Steady-state","rep":null,"driver":null,"heating":null,"conf":"low","lcoe":84.0,"okw":5872,"q":9.6,"grounded":true,"aster":false,"model":null,"top":["availability","interest_rate","construction_time_yr"]},{"id":"35","name":"PoloMac Magnetic Confinement","company":"Deutelio","fuel":"DD","fam":"MFE","topo":"Dipole","capture":"Thermal (unspecified)","magnet":"Resistive","blanket":null,"mode":"Steady-state","rep":null,"driver":"Internal dipole coil with magnetic tunnel supports","heating":"Unknown","conf":"medium-low","lcoe":1297.3,"okw":18176,"q":5.5,"grounded":false,"aster":false,"model":"standalone","top":["eta_th","M_blanket","u_tritium_per_g"]},{"id":"36","name":"Helical Coil Stellarator (D-T)","company":"Helical Fusion","fuel":"DT","fam":"MFE","topo":"Stellarator","capture":"Thermal (sCO2)","magnet":"HTS (3D stellarator)","blanket":"Liquid metal","mode":"Steady-state","rep":null,"driver":"Continuous helical HTS coils (REBCO WISE conductor, 8 T) + 250 GHz CW gyrotrons","heating":"RF (ECRH)","conf":"high","lcoe":1009.8,"okw":77296,"q":1.9,"grounded":true,"aster":false,"model":"costingfe","top":["interest_rate","availability","R0"]}];
+var BASE='https://1cf.energy/';
+var CORR=[
+ {k:'mm',name:'Most-mature',sub:'magnetic D-T',url:'most-mature-corridor/',ids:['01','21','28','29','33','34','09','05','10','20a','20b','36','12','35']},
+ {k:'bp',name:'Byproduct value',sub:'overlay on a D-T host',url:'byproduct-value-corridor/',ids:[],sec:['01','21','28','29','33','34']},
+ {k:'pu',name:'Pulsed plant',sub:'per-shot economics',url:'pulsed-plant-corridor/',ids:['17a','31','17b','26','30','32','03','25','22','07','14','02']},
+ {k:'dc',name:'Direct conversion',sub:'charged-particle capture',url:'direct-conversion-corridor/',ids:['08','19','11']},
+ {k:'mn',name:'Minimal neutron',sub:'p-B11',url:'minimal-neutron-corridor/',ids:['06','18','04','23','24']},
+ {k:'cl',name:'Compact learning',sub:'small units, volume learning',url:'compact-learning-corridor/',ids:['13','15','27','16']}
+];
+var FIN={
+ mm:[{n:'1 GWe stellarator',b:'Thea, Proxima as references',t0:227.5,t3:25.9}],
+ bp:[{n:'D-T tokamak + gold',b:'Hg→Au, after Marathon Fusion',t0:89.4,t3:-22.1}],
+ pu:[{n:'Fiber laser, direct drive',b:'~10 Hz, dry wall, sCO₂',t0:115.4,t3:24.2},{n:'KrF laser, hybrid drive',b:'~1 Hz, liquid wall, sCO₂',t0:null,t3:30.1}],
+ dc:[{n:'Pulsed inductive D-He3 FRC',b:'based on Helion architecture',t0:111.0,t3:10.6}],
+ mn:[{n:'p-B11 tandem mirror',b:'no blanket or tritium plant',t0:62.9,t3:12.1}],
+ cl:[{n:'10 MWe compact product',b:'25% learning rate',text:['$10 in year 41','after 645 GW']}]
+};
+var SHORT={'01':['Commonwealth','HTS tokamak'],'02':['Sonofusion','acoustic ICF'],'03':['Cortex','liquid-jet laser ICF'],'04':['HB11','p-B11 laser ICF'],'05':['Thea','planar-coil stellarator'],'06':['Pale Blue','p-B11 mirror'],'07':['Pacific Fusion','MagLIF'],'08':['Helion','FRC, direct conversion'],'09':['Proxima','QI stellarator'],'10':['Gauss','large stellarator'],'11':['Realta','D-T mirror'],'12':['OpenStar','levitated dipole'],'13':['Avalanche','electrostatic'],'14':['General Fusion','pneumatic MTF'],'15':['Zap','sheared-flow Z-pinch'],'16':['Acceleron','muon-catalyzed'],'17a':['Xcimer','hybrid direct drive'],'17b':['Focused','fast ignition'],'18':['TAE','p-B11 FRC'],'19':['Zephyr','orbital dipole, D-He3'],'20a':['Type One','Infinity Two'],'20b':['Renaissance','liquid-wall stellarator'],'21':['Tokamak Energy','spherical tokamak'],'22':['First Light','projectile ICF'],'23':['Marvel','nanostructured p-B11'],'24':['LPPFusion','dense plasma focus'],'25':['Intensity','heavy-ion ICF'],'26':['Inertia','indirect drive'],'27':['EMC2','Polywell'],'28':['Energy Singularity','full-HTS tokamak'],'29':['Firefly','negative triangularity'],'30':['Inertia','NIF commercialization'],'31':['Blue Laser Fusion','OEC laser ICF'],'32':['GenF','French direct drive'],'33':['Neo Fusion','BEST tokamak'],'34':['Pranos','compact spherical tokamak'],'35':['Deutelio','PoloMac'],'36':['Helical Fusion','helical stellarator']};
+var FUEL={DT:'D-T',DD:'D-D',PB11:'p-B11',DHe3:'D-He3'};
+var FAM={MFE:'Magnetic',IFE:'Inertial',MIF:'Magneto-inertial',NONSTANDARD:'Non-standard'};
+var SENS={availability:'Availability',plant_availability:'Availability',interest_rate:'Interest rate',eta_th:'Thermal efficiency',thermal_efficiency:'Thermal efficiency',R0:'Major radius',construction_time_yr:'Construction time',target_unit_cost:'Target unit cost',f_rep:'Repetition rate',plasma_t:'Plasma temperature',fuel_recovery:'Fuel recovery',eta_dec:'Direct-conversion efficiency',Q_sci:'Scientific gain',M_blanket:'Blanket energy multiplication',q_eng:'Engineering gain',inflation_rate:'Inflation rate',p_fus_MW:'Fusion power',n_fus_per_muon:'Fusions per muon',u_tritium_per_g:'Tritium price',nanoshell_outer_radius_nm:'Target geometry',nanoshell_inner_radius_nm:'Target geometry',kappa:'Elongation'};
+var byId={}; CONCEPTS.forEach(function(c){byId[c.id]=c;});
+var corrOf={}; CORR.forEach(function(g){g.ids.forEach(function(i){corrOf[i]=g;});});
+
+var NS='http://www.w3.org/2000/svg', svg=document.getElementById('flow');
+function el(tag,attrs,parent,text){var e=document.createElementNS(NS,tag);for(var a in attrs)e.setAttribute(a,attrs[a]);if(text!=null)e.textContent=text;(parent||svg).appendChild(e);return e;}
+
+// Geometry
+var W=1160, TOP=58, ROW=18, GAP=16;
+var LX=236, NX=242, CX0=430, CX1=606, FX0=670, FX1=850, DX0=900, DX1=1120;
+var y=TOP, pos={};
+CORR.forEach(function(g){
+  if(!g.ids.length){ g.gy0=y; g.gy1=y; y+=10; return; }
+  if(y>TOP) y+=GAP;
+  g.gy0=y; g.ids.forEach(function(i){pos[i]=y+ROW/2; y+=ROW;}); g.gy1=y;
+});
+var conceptsEnd=y;
+// corridor cards
+CORR.forEach(function(g){ g.h=Math.max(58,g.ids.length*11); g.want=(g.gy0+g.gy1)/2; });
+CORR[1].want=CORR[0].gy1+8;
+var last=TOP-12;
+CORR.forEach(function(g){ var t=Math.max(g.want-g.h/2,last+12); g.y=t; last=t+g.h; });
+// finalist cards
+var finals=[]; last=TOP-12;
+CORR.forEach(function(g){
+  var fs=FIN[g.k], fh=40, fg=8, tot=fs.length*fh+(fs.length-1)*fg;
+  var t=Math.max(g.y+g.h/2-tot/2,last+12);
+  fs.forEach(function(f,i){ f.y=t+i*(fh+fg); f.h=fh; f.g=g; finals.push(f); });
+  last=t+tot;
+});
+var H=Math.max(conceptsEnd,last,CORR[CORR.length-1].y+CORR[CORR.length-1].h)+24;
+svg.setAttribute('viewBox','0 0 '+W+' '+H);
+
+// Column headers
+[['① 38 concepts screened',40,'start'],['② Six corridor premises',CX0,'start'],['③ Designs studied',FX0,'start']].forEach(function(h){
+  el('text',{x:h[1],y:22,'font-size':11.5,'font-weight':700,fill:'var(--ink)','text-anchor':h[2]},null,h[0]);
+});
+el('text',{x:DX0,y:22,'font-size':11.5,'font-weight':700,fill:'var(--ink)'},null,'④ LCOE range');
+
+var gLinks=el('g',{}), gNodes=el('g',{}), gCards=el('g',{});
+
+// Concept → corridor links (primary) and byproduct secondary links
+function curve(x0,y0,x1,y1){var m=(x0+x1)/2;return 'M'+x0+','+y0+' C'+m+','+y0+' '+m+','+y1+' '+x1+','+y1;}
+CORR.forEach(function(g){
+  var n=g.ids.length;
+  g.ids.forEach(function(i,j){
+    var ty=g.y+(j+.5)*g.h/n;
+    el('path',{d:curve(NX+6,pos[i],CX0,ty),class:'lk','data-c':i,stroke:'var(--c-'+g.k+')','stroke-width':Math.min(8,g.h/n-2),opacity:.3},gLinks);
+  });
+  if(g.sec){ g.sec.forEach(function(i,j){
+    var ty=g.y+10+j*(g.h-20)/(g.sec.length-1);
+    el('path',{d:curve(NX+6,pos[i],CX0,ty),class:'lk sec','data-c':i,stroke:'var(--c-bp)','stroke-width':1.4,opacity:.55},gLinks);
+  });}
+});
+// corridor → finalist links
+finals.forEach(function(f){
+  var g=f.g, sib=FIN[g.k], idx=sib.indexOf(f), n=sib.length;
+  var sy=g.y+g.h/2+(idx-(n-1)/2)*Math.min(14,g.h/n);
+  el('path',{d:curve(CX1,sy,FX0,f.y+f.h/2),class:'lk','data-g':g.k,stroke:'var(--c-'+g.k+')','stroke-width':10,opacity:.3},gLinks);
+});
+
+// Concept nodes
+CONCEPTS.forEach(function(c){
+  var g=corrOf[c.id], cy=pos[c.id], s=SHORT[c.id]||[c.company,''];
+  var grp=el('g',{class:'cn','data-c':c.id,tabindex:0,role:'button','aria-label':s[0]+', '+s[1]+': show details'},gNodes);
+  el('rect',{x:30,y:cy-ROW/2,width:NX+8-30,height:ROW,fill:'transparent'},grp);
+  var t=el('text',{x:LX,y:cy+4,'text-anchor':'end','font-size':11,class:'lab'},grp);
+  el('tspan',{fill:'var(--ink)','font-weight':600},t,s[0]);
+  el('tspan',{fill:'var(--muted)'},t,' · '+s[1]);
+  if(c.grounded===false) el('rect',{x:NX+.75,y:cy-5.25,width:4.5,height:10.5,fill:'var(--surface)',stroke:'var(--c-'+g.k+')','stroke-width':1.5},grp);
+  else el('rect',{x:NX,y:cy-6,width:6,height:12,fill:'var(--c-'+g.k+')'},grp);
+  grp.addEventListener('mouseenter',function(){focus(c.id);});
+  grp.addEventListener('mouseleave',function(){focus(null);});
+  grp.addEventListener('click',function(){select(c.id);});
+  grp.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select(c.id);}});
+  grp.addEventListener('focus',function(){focus(c.id);});
+  grp.addEventListener('blur',function(){focus(null);});
+});
+
+// Corridor cards
+function card(parent,x,y,w,h,color,l1,l2,href,label){
+  var a=el('a',{href:href,target:'_blank',rel:'noopener',class:'card-link','aria-label':label},parent);
+  el('rect',{class:'bg',x:x,y:y,width:w,height:h,rx:4,fill:'var(--surface)',stroke:color,'stroke-width':1.3},a);
+  el('rect',{x:x,y:y,width:5,height:h,rx:1.5,fill:color},a);
+  el('text',{x:x+13,y:y+17,'font-size':12,'font-weight':700,fill:'var(--ink)'},a,l1);
+  if(l2) el('text',{x:x+13,y:y+32,'font-size':10,fill:'var(--muted)'},a,l2);
+  return a;
+}
+CORR.forEach(function(g){
+  var col='var(--c-'+g.k+')';
+  var a=card(gCards,CX0,g.y,CX1-CX0,g.h,col,g.name,g.sub,BASE+g.url,g.name+' corridor study');
+  var cnt=g.ids.length?g.ids.length+(g.ids.length===1?' concept':' concepts'):'overlay';
+  el('text',{x:CX0+13,y:g.y+g.h-9,'font-size':10,class:'mono',fill:'var(--muted)'},a,cnt);
+  el('text',{x:CX1-9,y:g.y+g.h-9,'font-size':10,'text-anchor':'end',fill:'var(--teal)'},a,'Read study ↗');
+  a.addEventListener('mouseenter',function(){focusGroup(g);});
+  a.addEventListener('mouseleave',function(){focus(null);});
+});
+// Finalist cards
+finals.forEach(function(f){
+  var g=f.g, col='var(--c-'+g.k+')';
+  var a=card(gCards,FX0,f.y,FX1-FX0,f.h,col,f.n,f.b,BASE+g.url,f.n+': read the '+g.name+' study');
+  a.addEventListener('mouseenter',function(){focusGroup(g);});
+  a.addEventListener('mouseleave',function(){focus(null);});
+});
+
+// LCOE dumbbells, log scale
+var LMIN=5,LMAX=300;
+function lx(v){return DX0+(Math.log10(v)-Math.log10(LMIN))/(Math.log10(LMAX)-Math.log10(LMIN))*(DX1-DX0);}
+var fy0=finals[0].y-6, fy1=finals[finals.length-1].y+finals[finals.length-1].h+6;
+[10,30,100,300].forEach(function(v){
+  var x=lx(v);
+  el('line',{x1:x,x2:x,y1:fy0,y2:fy1,stroke:'var(--rule)'},gLinks);
+  el('text',{x:x,y:40,'font-size':9.5,'text-anchor':'middle',class:'mono',fill:'var(--muted)'},null,'$'+v);
+});
+el('text',{x:DX0,y:52,'font-size':9,fill:'var(--muted)'},null,'$/MWh, log scale');
+var xt=lx(10);
+el('line',{x1:xt,x2:xt,y1:fy0-4,y2:fy1,stroke:'var(--target)','stroke-width':1.6,'stroke-dasharray':'4 3'},gLinks);
+finals.forEach(function(f){
+  var cy=f.y+f.h/2, col='var(--c-'+f.g.k+')';
+  if(f.text){ el('text',{x:lx(10)+6,y:cy-2,'font-size':9.5,fill:'var(--ink)'},null,f.text[0]); el('text',{x:lx(10)+6,y:cy+10,'font-size':9.5,fill:'var(--muted)'},null,f.text[1]); return; }
+  var x3=f.t3>0?lx(f.t3):DX0, x0=f.t0?lx(f.t0):null;
+  if(x0) el('line',{x1:x3,x2:x0,y1:cy,y2:cy,stroke:col,'stroke-width':2,opacity:.6});
+  if(f.t3<0){ el('path',{d:'M'+(DX0+6)+','+(cy-4)+' L'+(DX0-1)+','+cy+' L'+(DX0+6)+','+(cy+4)+' Z',fill:col}); }
+  else el('circle',{cx:x3,cy:cy,r:4.5,fill:col});
+  if(x0) el('circle',{cx:x0,cy:cy,r:4,fill:'var(--surface)',stroke:col,'stroke-width':2});
+  if(f.t3<0) el('text',{x:DX0+8,y:cy-8,'font-size':9,class:'mono',fill:'var(--ink)','font-weight':600},null,'−22.1 after gold'); else el('text',{x:x3-8,y:cy+3.5,'font-size':9,'text-anchor':'end',class:'mono',fill:'var(--ink)','font-weight':600},null,f.t3.toFixed(1));
+  if(x0) el('text',{x:x0,y:cy+15,'font-size':9,'text-anchor':'middle',class:'mono',fill:'var(--muted)'},null,f.t0.toFixed(1));
+});
+el('text',{x:xt+3,y:fy0-6,'font-size':9,'font-weight':600,class:'mono',fill:'var(--target)'},null,'1¢');
+
+// Interactions
+var selected=null, anchorEl=null;
+function focus(id){
+  var tgt=id||null;
+  svg.classList.toggle('focus',!!tgt);
+  svg.querySelectorAll('.lk').forEach(function(p){
+    var on=false;
+    if(tgt){ var c=p.getAttribute('data-c'), g=p.getAttribute('data-g');
+      on = c===tgt || (g && corrOf[tgt] && corrOf[tgt].k===g); }
+    p.classList.toggle('on',on);
+  });
+  svg.querySelectorAll('.cn').forEach(function(n){n.classList.toggle('on',n.getAttribute('data-c')===tgt);});
+  if(!tgt) applySel();
+}
+function focusGroup(g){
+  svg.classList.add('focus');
+  svg.querySelectorAll('.lk').forEach(function(p){
+    var c=p.getAttribute('data-c'), k=p.getAttribute('data-g');
+    p.classList.toggle('on', k===g.k || (c && (g.ids.indexOf(c)>-1 || (g.sec||[]).indexOf(c)>-1) && (!p.classList.contains('sec') || g.k==='bp')));
+  });
+  svg.querySelectorAll('.cn').forEach(function(n){var c=n.getAttribute('data-c');n.classList.toggle('on',g.ids.indexOf(c)>-1||(g.sec||[]).indexOf(c)>-1);});
+}
+function applySel(){ svg.querySelectorAll('.cn').forEach(function(n){n.classList.toggle('sel',n.getAttribute('data-c')===selected);}); }
+var ins=document.getElementById('inspector'), frame=document.querySelector('.flow-frame');
+function place(){
+  if(ins.hidden||!anchorEl) return;
+  var fr=frame.getBoundingClientRect(), nr=anchorEl.getBoundingClientRect(), pw=ins.offsetWidth, ph=ins.offsetHeight;
+  var left=nr.left-fr.left; left=Math.max(10,Math.min(left,fr.width-pw-10));
+  var below=nr.bottom-fr.top+8, above=nr.top-fr.top-ph-8;
+  var spaceBelow=window.innerHeight-nr.bottom, spaceAbove=nr.top;
+  var top=(spaceBelow<ph+16 && spaceAbove>spaceBelow && above>=0)?above:below;
+  ins.style.left=left+'px'; ins.style.top=top+'px';
+}
+function closeIns(){ if(ins.hidden) return; ins.hidden=true; selected=null; applySel(); if(anchorEl) anchorEl.focus({preventScroll:true}); anchorEl=null; }
+function select(id){
+  if(selected===id && !ins.hidden){ closeIns(); return; }
+  selected=id; anchorEl=svg.querySelector('.cn[data-c="'+id+'"]'); applySel(); render(id); ins.hidden=false; place();
+}
+window.addEventListener('resize',place);
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeIns(); });
+document.addEventListener('click',function(e){ if(!ins.hidden && !ins.contains(e.target) && !e.target.closest('.cn')) closeIns(); });
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch];});}
+function render(id){
+  var c=byId[id], g=corrOf[id], s=SHORT[id];
+  var rows=[['Fuel',FUEL[c.fuel]||c.fuel],['Confinement',FAM[c.fam]||c.fam],['Topology / driver',c.topo],['Operation',c.mode],['Repetition rate',c.rep],['Magnets',c.magnet],['Heating',c.heating&&c.heating!=='Unknown'?c.heating:null],['Driver technology',c.driver],['Energy capture',c.capture],['Blanket',c.blanket]];
+  var dl=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+(r[1]?esc(r[1]):'<span class="muted">not published</span>')+'</dd>';}).join('');
+  var sens=[]; (c.top||[]).forEach(function(k){var n=SENS[k]||k; if(sens.indexOf(n)<0) sens.push(n);});
+  var out;
+  if(c.grounded===false){
+    out='<p class="supp">No published quantitative design point. The pipeline still built a model, but its headline LCOE is suppressed because it would reflect our assumptions rather than this design.</p>';
+  } else {
+    out='<div class="row"><span>Headline LCOE</span><b>$'+c.lcoe.toFixed(0)+'/MWh</b></div>'+
+        '<div class="row"><span>Overnight cost</span><b>$'+c.okw.toLocaleString('en-US')+'/kW</b></div>'+
+        '<div class="row"><span>Engineering gain</span><b>'+c.q.toFixed(1)+'</b></div>';
+  }
+  var model=c.model==='costingfe'?'1costingFE archetype model':'Hand-built model (non-standard)';
+  ins.innerHTML=
+    '<button class="close" type="button" aria-label="Close details">×</button>'+
+    '<p class="hint">Concept '+esc(id)+' of 38</p>'+
+    '<h3>'+esc(c.name)+'</h3>'+
+    '<p class="muted" style="font-size:.9rem;margin-top:-6px">'+esc(c.company)+'</p>'+
+    '<a class="corr-chip" href="'+BASE+g.url+'" target="_blank" rel="noopener"><i style="background:var(--c-'+g.k+')"></i>'+esc(g.name)+' corridor ↗</a>'+
+    '<dl>'+dl+'</dl>'+
+    '<div class="out"><p class="hint">Pipeline output at 1 GWe</p>'+out+
+      (sens.length?'<p style="font-size:.8rem" class="muted">Most sensitive inputs</p><div class="sens">'+sens.map(function(n){return '<span>'+esc(n)+'</span>';}).join('')+'</div>':'')+
+      '<p class="foot">'+model+'. Our model at one published design point, assuming the physics works as intended. Not the company’s estimate.</p>'+
+      '<a href="https://concepts.1cf.energy/" target="_blank" rel="noopener" style="font-size:.84rem">Open in Concept Explorer ↗</a>'+
+    '</div>';
+}
+ins.addEventListener('click',function(e){ if(e.target.closest('.close')) closeIns(); });
+
+// Tier chart (small multiples)
+var C={pb11:{n:'Minimal-neutron',d:'p-B11',c:'--c-mn'},gold:{n:'Byproduct value',d:'+ gold',c:'--c-bp',hatch:true},dhe3:{n:'Direct-conversion',d:'D-He3',c:'--c-dc'},pulsed:{n:'Pulsed-plant',d:'fiber / direct',c:'--c-pu'},stell:{n:'Most-mature',d:'stellarator',c:'--c-mm'}};
+var tiers=[
+ {t:'Tier 0',s:'design basis',dom:[0,250],ticks:[0,50,100,150,200,250],rows:[['pb11',62.9],['gold',89.4],['dhe3',111.0],['pulsed',115.4],['stell',227.5]]},
+ {t:'Tier 1',s:'applicable record',dom:[0,170],ticks:[0,50,100,150],rows:[['gold',64.9],['pb11',76.1],['pulsed',99.2],['dhe3',112.1],['stell',158.6]]},
+ {t:'Tier 2',s:'extrapolation',dom:[0,52],ticks:[0,10,20,30,40,50],rows:[['gold',17.1],['pb11',26.1],['dhe3',26.8],['stell',44.4],['pulsed',47.6]]},
+ {t:'Tier 3',s:'speculation',dom:[-25,30],ticks:[-20,-10,0,10,20,30],rows:[['gold',-22.1],['dhe3',10.6],['pb11',12.1],['pulsed',24.2],['stell',25.9]]}
+];
+var PW=320,PL=104,PR=282,PT=18,PRH=40,BH=22,host=document.getElementById('panels');
+tiers.forEach(function(T,ti){
+  var PH=PT+T.rows.length*PRH+26;
+  var x=function(v){return PL+(v-T.dom[0])/(T.dom[1]-T.dom[0])*(PR-PL);};
+  var x0=x(0),xt=x(10);
+  var s='<svg viewBox="0 0 '+PW+' '+PH+'" role="img" aria-label="'+T.t+' '+T.s+' LCOE by corridor">';
+  s+='<defs><pattern id="h'+ti+'" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--surface)"/><rect width="3" height="6" fill="var(--c-bp)"/></pattern></defs>';
+  T.ticks.forEach(function(v){var xx=x(v);
+    s+='<line x1="'+xx+'" x2="'+xx+'" y1="'+(PT-6)+'" y2="'+(PH-22)+'" stroke="var(--rule)"/>';
+    s+='<text x="'+xx+'" y="'+(PH-8)+'" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--muted)">'+v+'</text>';});
+  s+='<line x1="'+x0+'" x2="'+x0+'" y1="'+(PT-6)+'" y2="'+(PH-22)+'" stroke="var(--muted)" stroke-width="1.2"/>';
+  T.rows.forEach(function(r,i){
+    var k=C[r[0]],v=r[1],yy=PT+i*PRH,by=yy+(PRH-BH)/2,xa=Math.min(x0,x(v)),w=Math.abs(x(v)-x0);
+    s+='<text x="'+(PL-8)+'" y="'+(by+9)+'" text-anchor="end" font-family="Public Sans, system-ui, sans-serif" font-size="10.5" font-weight="600" fill="var(--ink)">'+k.n+'</text>';
+    s+='<text x="'+(PL-8)+'" y="'+(by+21)+'" text-anchor="end" font-family="Public Sans, system-ui, sans-serif" font-size="9.5" fill="var(--muted)">'+k.d+'</text>';
+    s+= k.hatch ? '<rect x="'+xa+'" y="'+by+'" width="'+w+'" height="'+BH+'" fill="url(#h'+ti+')" stroke="var(--c-bp)"/>' : '<rect x="'+xa+'" y="'+by+'" width="'+w+'" height="'+BH+'" fill="var('+k.c+')"/>';
+    s+='<text x="'+(v<0?x0+5:x(v)+5)+'" y="'+(by+15)+'" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="600" fill="var(--ink)">'+v.toFixed(1)+'</text>';
+  });
+  s+='<line x1="'+xt+'" x2="'+xt+'" y1="'+(PT-10)+'" y2="'+(PH-22)+'" stroke="var(--target)" stroke-width="1.6" stroke-dasharray="4 3"/>';
+  s+='<text x="'+(xt+3)+'" y="'+(PT-10)+'" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600" fill="var(--target)">1¢</text></svg>';
+  var p=document.createElement('div'); p.className='panel'; p.innerHTML='<h4>'+T.t+'<span>'+T.s+'</span></h4>'+s; host.appendChild(p);
+});
+})();
+</script>
+
+</body>
+</html>
