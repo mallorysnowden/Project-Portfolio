@@ -544,9 +544,9 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
 <script>
 // Timeline, chapter navigation, lightbox, email copy
 (function(){
-  var T0=2009, T1=2027;
+  var T0=2010.8, T1=2027;
   var items=[
-    {id:'nasa',l:'NASA',a:2009.3,b:2011.4},
+    {id:'nasa',l:'NASA',a:2010.9,b:2011.4},
     {id:'l3',l:'L3Harris',a:2011.5,b:2013.4},
     {id:'blue',l:'Blue Origin',a:2013.5,b:2018.05},
     {id:'astra',l:'Astra',a:2018.1,b:2020.45},
@@ -568,7 +568,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
     l.className='tl-label'+(it.lane?' lane':'')+(it.id?'':' static'); l.textContent=it.l;
     l.style.left=pct(it.lc||(it.a+it.b)/2); tl.appendChild(l);
   });
-  [2010,2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
+  [2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
   function openCh(id){var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'});}
   if(location.hash){var d=document.getElementById(location.hash.slice(1)); if(d&&d.tagName==='DETAILS') d.open=true;}
 
