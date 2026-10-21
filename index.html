@@ -321,8 +321,8 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
             <span><i class="lg-dash"></i>Host-plant candidate, byproduct overlay</span>
             <span><i class="lg-node"></i>Published design point</span>
             <span><i class="lg-hollow"></i>No design point (LCOE suppressed)</span>
-            <span><i class="lg-open"></i>Tier 0</span>
-            <span><i class="lg-fill"></i>Tier 3</span>
+            <span><i class="lg-open"></i>Max LCOE (any tier)</span>
+            <span><i class="lg-fill"></i>Min LCOE (any tier)</span>
             <span><i class="lg-target"></i>1¢/kWh</span>
           </div>
           <aside class="inspector" id="inspector" role="dialog" aria-label="Concept details" hidden></aside>
@@ -651,8 +651,8 @@ var FIN={
  mm:[{n:'1 GWe stellarator',b:'Thea, Proxima as references',t0:227.5,t3:25.9}],
  bp:[{n:'D-T tokamak + gold',b:'Hg→Au, after Marathon Fusion',t0:89.4,t3:-22.1}],
  pu:[{n:'Fiber laser, direct drive',b:'~10 Hz, dry wall, sCO₂',t0:115.4,t3:24.2},{n:'KrF laser, hybrid drive',b:'~1 Hz, liquid wall, sCO₂',t0:null,t3:30.1}],
- dc:[{n:'Pulsed inductive D-He3 FRC',b:'based on Helion architecture',t0:111.0,t3:10.6}],
- mn:[{n:'p-B11 tandem mirror',b:'no blanket or tritium plant',t0:62.9,t3:12.1}],
+ dc:[{n:'Pulsed inductive D-He3 FRC',b:'based on Helion architecture',t0:112.1,t3:10.6}],
+ mn:[{n:'p-B11 tandem mirror',b:'no blanket or tritium plant',t0:76.1,t3:12.1}],
  cl:[{n:'10 MWe compact product',b:'25% learning rate',text:['Cost floor is $10 in year 41','after 645 GW']}]
 };
 var SHORT={'01':['Commonwealth','HTS tokamak'],'02':['Sonofusion','acoustic ICF'],'03':['Cortex','liquid-jet laser ICF'],'04':['HB11','p-B11 laser ICF'],'05':['Thea','planar-coil stellarator'],'06':['Pale Blue','p-B11 mirror'],'07':['Pacific Fusion','MagLIF'],'08':['Helion','FRC, direct conversion'],'09':['Proxima','QI stellarator'],'10':['Gauss','large stellarator'],'11':['Realta','D-T mirror'],'12':['OpenStar','levitated dipole'],'13':['Avalanche','electrostatic'],'14':['General Fusion','pneumatic MTF'],'15':['Zap','sheared-flow Z-pinch'],'16':['Acceleron','muon-catalyzed'],'17a':['Xcimer','hybrid direct drive'],'17b':['Focused','fast ignition'],'18':['TAE','p-B11 FRC'],'19':['Zephyr','orbital dipole, D-He3'],'20a':['Type One','Infinity Two'],'20b':['Renaissance','liquid-wall stellarator'],'21':['Tokamak Energy','spherical tokamak'],'22':['First Light','projectile ICF'],'23':['Marvel','nanostructured p-B11'],'24':['LPPFusion','dense plasma focus'],'25':['Intensity','heavy-ion ICF'],'26':['Inertia','indirect drive'],'27':['EMC2','Polywell'],'28':['Energy Singularity','full-HTS tokamak'],'29':['Firefly','negative triangularity'],'30':['Inertia','NIF commercialization'],'31':['Blue Laser Fusion','OEC laser ICF'],'32':['GenF','French direct drive'],'33':['Neo Fusion','BEST tokamak'],'34':['Pranos','compact spherical tokamak'],'35':['Deutelio','PoloMac'],'36':['Helical Fusion','helical stellarator']};
