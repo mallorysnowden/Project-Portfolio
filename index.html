@@ -274,10 +274,10 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
 
         <p class="sub">Evidence tiers · each design re-priced four times</p>
         <div class="tiers">
-          <div class="tier"><span class="n">TIER 0</span><b>Design basis</b><p>The developer's own published design point</p><span class="wacc">7% capital · own build time · 30 yr</span></div>
-          <div class="tier"><span class="n">TIER 1</span><b>Records</b><p>Only what has been demonstrated somewhere</p><span class="wacc">7% · 5 yr build · 60 yr life</span></div>
-          <div class="tier"><span class="n">TIER 2</span><b>Extrapolation</b><p>Improvements with a known mechanism</p><span class="wacc">5% · 3.25 yr · 80 yr</span></div>
-          <div class="tier"><span class="n">TIER 3</span><b>Speculation</b><p>No known mechanism yet; a bound, not a forecast</p><span class="wacc">3% · 2.5 yr · 80 yr</span></div>
+          <div class="tier"><span class="n">TIER 0</span><b>Design basis</b><p>The developer's own published design point</p><span class="wacc">7% WACC · machine's own build time · 30 yr lifespan</span></div>
+          <div class="tier"><span class="n">TIER 1</span><b>Records</b><p>Uses the best-case scenarios ever demonstrated to date</p><span class="wacc">7% WACC · 5 yr build time · 60 yr lifespan</span></div>
+          <div class="tier"><span class="n">TIER 2</span><b>Extrapolation</b><p>Improvements beyond the Records tier with a known mechanism</p><span class="wacc">5% WACC · 3.25 yr build time · 80 yr lifespan</span></div>
+          <div class="tier"><span class="n">TIER 3</span><b>Speculation</b><p>No known mechanism yet; a bound, not a forecast</p><span class="wacc">3% WACC · 2.5 yr build time · 80 yr lifespan</span></div>
         </div>
         <div class="chart-frame">
           <p class="eyebrow" style="margin-bottom:12px">LCOE, $/MWh at 1 GWe · each panel on its own scale · dashed line = 1¢/kWh</p>
@@ -289,9 +289,6 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
           </div>
         </div>
 
-        <p class="sub">Tools I built · live</p>
-        <div class="embed tall"><iframe src="https://1cf.energy/tools/scoring/" title="Scoring Explorer" loading="lazy"></iframe><span class="cap"><span>Scoring Explorer · re-weight the criteria and re-rank 38 concepts</span><a href="https://1cf.energy/tools/scoring/">Open full screen ↗</a></span></div>
-        <div class="embed tall"><iframe src="https://1cf.energy/tools/ai/" title="AI Lever Console" loading="lazy"></iframe><span class="cap"><span>AI Lever Console · how AI-driven improvements move a mature tokamak's cost</span><a href="https://1cf.energy/tools/ai/">Open full screen ↗</a></span></div>
         <div class="duo">
           <div class="stack">
             <p class="sub">Tools I built</p>
@@ -507,7 +504,7 @@ var FIN={
  pu:[{n:'Fiber laser, direct drive',b:'~10 Hz, dry wall, sCO₂',t0:115.4,t3:24.2},{n:'KrF laser, hybrid drive',b:'~1 Hz, liquid wall, sCO₂',t0:null,t3:30.1}],
  dc:[{n:'Pulsed inductive D-He3 FRC',b:'based on Helion architecture',t0:111.0,t3:10.6}],
  mn:[{n:'p-B11 tandem mirror',b:'no blanket or tritium plant',t0:62.9,t3:12.1}],
- cl:[{n:'10 MWe compact product',b:'25% learning rate',text:['$10 in year 41','after 645 GW']}]
+ cl:[{n:'10 MWe compact product',b:'25% learning rate',text:['Cost floor is $10 in year 41','after 645 GW']}]
 };
 var SHORT={'01':['Commonwealth','HTS tokamak'],'02':['Sonofusion','acoustic ICF'],'03':['Cortex','liquid-jet laser ICF'],'04':['HB11','p-B11 laser ICF'],'05':['Thea','planar-coil stellarator'],'06':['Pale Blue','p-B11 mirror'],'07':['Pacific Fusion','MagLIF'],'08':['Helion','FRC, direct conversion'],'09':['Proxima','QI stellarator'],'10':['Gauss','large stellarator'],'11':['Realta','D-T mirror'],'12':['OpenStar','levitated dipole'],'13':['Avalanche','electrostatic'],'14':['General Fusion','pneumatic MTF'],'15':['Zap','sheared-flow Z-pinch'],'16':['Acceleron','muon-catalyzed'],'17a':['Xcimer','hybrid direct drive'],'17b':['Focused','fast ignition'],'18':['TAE','p-B11 FRC'],'19':['Zephyr','orbital dipole, D-He3'],'20a':['Type One','Infinity Two'],'20b':['Renaissance','liquid-wall stellarator'],'21':['Tokamak Energy','spherical tokamak'],'22':['First Light','projectile ICF'],'23':['Marvel','nanostructured p-B11'],'24':['LPPFusion','dense plasma focus'],'25':['Intensity','heavy-ion ICF'],'26':['Inertia','indirect drive'],'27':['EMC2','Polywell'],'28':['Energy Singularity','full-HTS tokamak'],'29':['Firefly','negative triangularity'],'30':['Inertia','NIF commercialization'],'31':['Blue Laser Fusion','OEC laser ICF'],'32':['GenF','French direct drive'],'33':['Neo Fusion','BEST tokamak'],'34':['Pranos','compact spherical tokamak'],'35':['Deutelio','PoloMac'],'36':['Helical Fusion','helical stellarator']};
 var FUEL={DT:'D-T',DD:'D-D',PB11:'p-B11',DHe3:'D-He3'};
@@ -549,7 +546,7 @@ svg.setAttribute('viewBox','0 0 '+W+' '+H);
 [['① 38 concepts screened',40,'start'],['② Six corridor premises',CX0,'start'],['③ Designs studied',FX0,'start']].forEach(function(h){
   el('text',{x:h[1],y:22,'font-size':11.5,'font-weight':700,fill:'var(--ink)','text-anchor':h[2]},null,h[0]);
 });
-el('text',{x:DX0,y:22,'font-size':11.5,'font-weight':700,fill:'var(--ink)'},null,'④ LCOE range');
+el('text',{x:DX0,y:22,'font-size':11.5,'font-weight':700,fill:'var(--ink)'},null,'④ Nth-of-a-kind LCOE range');
 
 var gLinks=el('g',{}), gNodes=el('g',{}), gCards=el('g',{});
 
