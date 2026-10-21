@@ -58,14 +58,18 @@ a:focus-visible,summary:focus-visible,button:focus-visible,[tabindex]:focus-visi
 
 /* Timeline nav */
 .timeline{position:relative;overflow-x:auto;padding-bottom:4px}
-.tl-track{position:relative;min-width:720px;height:74px}
-.tl-axis{position:absolute;left:0;right:0;top:44px;height:2px;background:var(--rule)}
-.tl-seg{position:absolute;top:38px;height:14px;border-radius:2px;background:var(--ink);color:var(--surface);font-family:var(--f-mono);font-size:.68rem;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;overflow:hidden;border:0;cursor:pointer;padding:0 4px}
+.tl-track{position:relative;min-width:720px;height:100px}
+.tl-axis{position:absolute;left:0;right:0;top:70px;height:2px;background:var(--rule)}
+.tl-seg{position:absolute;top:64px;height:14px;border-radius:2px;background:var(--ink);color:var(--surface);font-family:var(--f-mono);font-size:.68rem;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;overflow:hidden;border:0;cursor:pointer;padding:0 4px}
 .tl-seg.edu{background:var(--teal)}
 .tl-seg.now{background:var(--accent)}
+.tl-seg.lane{top:30px;height:8px;background:#0b3d91}
+.tl-label.lane{top:6px}
+.tl-seg.static{background:var(--rule);color:var(--muted);cursor:default}
+.tl-label.static{color:var(--muted);cursor:default}
 .tl-seg:hover{filter:brightness(1.15)}
-.tl-label{position:absolute;top:8px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
-.tl-year{position:absolute;top:58px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
+.tl-label{position:absolute;top:40px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
+.tl-year{position:absolute;top:84px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
 
 /* Chapters */
 .chapters{display:flex;flex-direction:column;gap:14px}
@@ -194,6 +198,14 @@ dt{color:var(--muted)} dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .verdict b{font-family:var(--f-display);font-stretch:112%;font-size:1.6rem;font-weight:800;color:var(--accent);display:block;line-height:1.1}
 .verdict span{font-size:.82rem;color:var(--muted)}
 
+.chain{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.chain .node{flex:1 1 200px;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:4px;background:var(--bg)}
+.chain .node .k{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.chain .node b{font-family:var(--f-display);font-size:1rem}
+.chain .node span:last-child{font-size:.8rem;color:var(--muted);line-height:1.4}
+.chain>i{flex:none;align-self:center;width:18px;height:2px;background:var(--muted);position:relative}
+.chain>i::after{content:"";position:absolute;right:-1px;top:-4px;border-left:7px solid var(--muted);border-top:5px solid transparent;border-bottom:5px solid transparent}
+@media (max-width:760px){.chain>i{display:none}}
 .earlier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:14px}
 .earlier div{border-left:3px solid var(--rule);padding-left:12px;display:flex;flex-direction:column;gap:3px}
 .earlier b{font-family:var(--f-display);font-size:1rem}
@@ -435,19 +447,52 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
       </div>
     </details>
 
-    <!-- EARLIER -->
-    <details class="ch" id="earlier">
+    <!-- L3HARRIS -->
+    <details class="ch" id="l3">
       <summary>
-        <span class="logo" style="--lc:#4a5560">PRE</span>
-        <span class="who"><h2>Earlier</h2><p>L3Harris · NASA Langley · Lehigh University · <span class="yr">2007–2013</span></p></span>
+        <span class="logo" style="--lc:#1a2b4c">L3<img src="https://www.google.com/s2/favicons?domain=l3harris.com&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>L3Harris Integrated Optical Systems</h2><p>Thermal Mechanical Engineer · <span class="yr">2011–2013</span></p></span>
         <span class="strip" aria-hidden="true"></span>
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <div class="body">
-        <div class="earlier">
-          <div><b>L3Harris · Thermal-Mechanical Engineer</b><span>On-orbit thermal and optical performance for NASA, DoD and commercial satellites, including picometer-stability feasibility for a gravitational-wave observatory.</span></div>
-          <div><b>NASA Langley · Research Intern</b><span>Composites for the Ares V shroud; wrote a MATLAB cure-kinetics tool.</span></div>
-          <div><b>Lehigh University · BS Mechanical Engineering</b><span>Aerospace minor, High Honors.</span></div>
+        <p class="mission">Lead thermal engineer on a telescope study for a space-based <em>gravitational-wave observatory</em>, where the optics had to hold their path length steady to picometers.</p>
+        <div class="chain" aria-label="Analysis chain">
+          <div class="node"><span class="k">Thermal</span><b>Thermal Desktop</b><span>On-orbit solar and electronics flux → telescope temperatures</span></div>
+          <i aria-hidden="true"></i>
+          <div class="node"><span class="k">Structural</span><b>Femap / NASTRAN</b><span>Temperatures → thermal deformation of the optics</span></div>
+          <i aria-hidden="true"></i>
+          <div class="node"><span class="k">Optical</span><b>CODE V</b><span>Optic motions → optical path length and wavefront error</span></div>
+        </div>
+        <div class="earlier" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div><b>Picometer stability</b><span>Thermal design to isolate the telescope from spacecraft and solar-array temperature swings.</span></div>
+          <div><b>NASA, DoD and commercial</b><span>On-orbit thermal and optical performance predictions across satellite programs.</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- NASA -->
+    <details class="ch" id="nasa">
+      <summary>
+        <span class="logo" style="--lc:#0b3d91;font-size:.78rem">NASA<img src="https://www.google.com/s2/favicons?domain=nasa.gov&amp;sz=128" alt="" onerror="this.remove()"></span>
+        <span class="who"><h2>NASA Langley Research Center</h2><p>Summer Research Intern · composites for the Ares V shroud · <span class="yr">2009 &amp; 2010</span></p></span>
+        <span class="strip" aria-hidden="true"><img src="img/nasa-langley.jpg" alt=""><img src="img/nasa-vacuum-bag.jpg" alt=""><img src="img/nasa-rheology.png" alt="" style="background:#fff;object-fit:contain"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="body">
+        <div class="jrows" style="margin-top:14px">
+          <div class="jrow">
+            <button class="ph" style="--ar:1.5025" data-cap="NASA Langley Research Center"><img src="img/nasa-langley.jpg" alt="Mallory in a flight suit in front of a NASA Langley aircraft and hangar" loading="lazy"><span class="tag"><span>NASA Langley · 2009 &amp; 2010</span></span></button>
+            <button class="ph" style="--ar:1.3333" data-cap="Vacuum-bagging a composite honeycomb panel for thermal-vacuum testing"><img src="img/nasa-vacuum-bag.jpg" alt="Composite honeycomb panel under a vacuum bag on a lab bench" loading="lazy"><span class="tag"><span class="mine-role">Honeycomb panels · built &amp; TVAC tested</span></span></button>
+            <button class="ph" style="--ar:0.8596" data-cap="Rheometer used for cure-cycle testing"><img src="img/nasa-rheometer.jpg" alt="Rheometer instrument" loading="lazy"><span class="tag"><span>Rheometer</span></span></button>
+            <button class="ph" style="--ar:0.8475" data-cap="Differential scanning calorimeter"><img src="img/nasa-dsc.jpg" alt="Differential scanning calorimeter instrument" loading="lazy"><span class="tag"><span>DSC</span></span></button>
+          </div>
+          <div class="jrow">
+            <button class="ph fit" style="--ar:1.142" data-cap="Rheology of MTM45-1 at 1 °C/min: gel point at the G′/G″ crossover, vitrification at the G″ peak"><img src="img/nasa-rheology.png" alt="Rheology plot of storage and loss modulus versus time during cure" loading="lazy"><span class="tag"><span class="mine-role">Gel point &amp; vitrification</span></span></button>
+            <button class="ph fit" style="--ar:1.2928" data-cap="Co-cure check: prepreg MTM45-1 and adhesive AF-555M under the same ramp-and-hold cycle"><img src="img/nasa-cocure.png" alt="Viscosity versus time for a prepreg and an adhesive under one cure cycle" loading="lazy"><span class="tag"><span class="mine-role">Prepreg + adhesive co-cure</span></span></button>
+            <button class="ph fit" style="--ar:1.3339" data-cap="Thermal pre-treatments I prescribed so the adhesive consolidates without bubbling under vacuum"><img src="img/nasa-pretreat.png" alt="Adhesive viscosity curves after several thermal pre-treatments" loading="lazy"><span class="tag"><span class="mine-role">Adhesive pre-treatment</span></span></button>
+            <button class="ph fit" style="--ar:1.4435" data-cap="DSC cure exotherm; my MATLAB tool integrates it to map degree of cure onto the rheology data"><img src="img/nasa-dsc-exotherm.png" alt="Differential scanning calorimetry heat-flow curve with cure exotherm" loading="lazy"><span class="tag"><span class="mine-role">DSC exotherm → MATLAB degree of cure</span></span></button>
+          </div>
         </div>
       </div>
     </details>
@@ -466,8 +511,10 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
 (function(){
   var T0=2007, T1=2027;
   var items=[
-    {id:'earlier',l:'Lehigh',a:2007.6,b:2011.4,c:'edu'},
-    {id:'earlier',l:'L3Harris',a:2011.5,b:2013.4},
+    {l:'Lehigh',a:2007.6,b:2011.4,c:'edu'},
+    {id:'nasa',l:'NASA',a:2009.42,b:2009.68,c:'nasa',lane:1},
+    {id:'nasa',l:'',a:2010.42,b:2010.68,c:'nasa',lane:1},
+    {id:'l3',l:'L3Harris',a:2011.5,b:2013.4},
     {id:'blue',l:'Blue Origin',a:2013.5,b:2018.05},
     {id:'astra',l:'Astra',a:2018.1,b:2020.45},
     {id:'joby',l:'Joby',a:2020.5,b:2024.45},
@@ -478,11 +525,15 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
   function pct(y){return ((y-T0)/(T1-T0)*100)+'%';}
   var ax=document.createElement('div'); ax.className='tl-axis'; tl.appendChild(ax);
   items.forEach(function(it){
-    var s=document.createElement('button'); s.type='button'; s.className='tl-seg'+(it.c?' '+it.c:'');
-    s.style.left=pct(it.a); s.style.width='calc('+pct(it.b)+' - '+pct(it.a)+')'; s.setAttribute('aria-label','Open '+it.l);
-    s.addEventListener('click',function(){openCh(it.id);}); tl.appendChild(s);
-    var l=document.createElement('button'); l.type='button'; l.className='tl-label'; l.textContent=it.l; l.style.left=pct((it.a+it.b)/2); l.tabIndex=-1;
-    l.addEventListener('click',function(){openCh(it.id);}); tl.appendChild(l);
+    var s=document.createElement(it.id?'button':'span'); if(it.id) s.type='button';
+    s.className='tl-seg'+(it.c?' '+it.c:'')+(it.lane?' lane':'')+(it.id?'':' static');
+    s.style.left=pct(it.a); s.style.width='calc('+pct(it.b)+' - '+pct(it.a)+')';
+    if(it.id){ s.setAttribute('aria-label','Open '+(it.l||'NASA')); s.addEventListener('click',function(){openCh(it.id);}); }
+    tl.appendChild(s);
+    if(!it.l) return;
+    var l=document.createElement(it.id?'button':'span'); if(it.id){ l.type='button'; l.tabIndex=-1; l.addEventListener('click',function(){openCh(it.id);}); }
+    l.className='tl-label'+(it.lane?' lane':'')+(it.id?'':' static'); l.textContent=it.l;
+    l.style.left=it.lane?pct((2009.42+2010.68)/2):pct((it.a+it.b)/2); tl.appendChild(l);
   });
   [2010,2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
   function openCh(id){var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'});}
