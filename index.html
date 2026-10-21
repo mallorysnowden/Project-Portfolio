@@ -71,6 +71,10 @@ a:focus-visible,summary:focus-visible,button:focus-visible,[tabindex]:focus-visi
 .tl-label.static{color:var(--muted);cursor:default}
 .tl-seg:hover{filter:brightness(1.15)}
 .tl-label{position:absolute;top:8px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
+.tl-label{display:inline-flex;align-items:center;gap:6px}
+.logo.mini{width:18px;height:18px;border-radius:4px;font-size:6.5px!important;letter-spacing:0;flex:none;overflow:hidden}
+.logo.mini[style*=".78rem"]{font-size:4.6px!important}
+.logo.mini img{padding:1px;border-radius:4px}
 .tl-year{position:absolute;top:58px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
 
 /* Chapters */
@@ -574,8 +578,11 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
     if(!it.l) return;
     var l=document.createElement(it.id?'button':'span'); if(it.id){ l.type='button'; l.tabIndex=-1; l.addEventListener('click',function(){openCh(it.id);}); }
     l.className='tl-label'+(it.lane?' lane':'')+(it.id?'':' static'); l.textContent=it.l;
-    l.style.left=pct(it.lc||(it.a+it.b)/2); tl.appendChild(l);
+    var lg=it.id&&document.querySelector('#'+it.id+' summary .logo'); if(lg){ var m=lg.cloneNode(true); m.classList.add('mini'); m.removeAttribute('aria-hidden'); m.setAttribute('aria-hidden','true'); l.insertBefore(m,l.firstChild); }
+    l.style.left=pct(it.lc||(it.a+it.b)/2); l.dataset.a=it.a; l.dataset.b=it.b; tl.appendChild(l);
   });
+  function fitLabels(){ var tr=tl.getBoundingClientRect(); tl.querySelectorAll('.tl-label').forEach(function(l){ l.style.transform=''; l.style.left=pct((+l.dataset.a+ +l.dataset.b)/2); var r=l.getBoundingClientRect(); if(r.left<tr.left){ l.style.transform='none'; l.style.left=pct(+l.dataset.a); } else if(r.right>tr.right){ l.style.transform='translateX(-100%)'; l.style.left=pct(+l.dataset.b); } }); }
+  requestAnimationFrame(fitLabels); window.addEventListener('resize',fitLabels); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitLabels);
   [2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
   function openCh(id){var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'});}
   if(location.hash){var d=document.getElementById(location.hash.slice(1)); if(d&&d.tagName==='DETAILS') d.open=true;}
