@@ -58,18 +58,17 @@ a:focus-visible,summary:focus-visible,button:focus-visible,[tabindex]:focus-visi
 
 /* Timeline nav */
 .timeline{position:relative;overflow-x:auto;padding-bottom:4px}
-.tl-track{position:relative;min-width:720px;height:100px}
-.tl-axis{position:absolute;left:0;right:0;top:70px;height:2px;background:var(--rule)}
-.tl-seg{position:absolute;top:64px;height:14px;border-radius:2px;background:var(--ink);color:var(--surface);font-family:var(--f-mono);font-size:.68rem;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;overflow:hidden;border:0;cursor:pointer;padding:0 4px}
+.tl-track{position:relative;min-width:720px;height:74px}
+.tl-axis{position:absolute;left:0;right:0;top:44px;height:2px;background:var(--rule)}
+.tl-seg{position:absolute;top:38px;height:14px;border-radius:2px;background:var(--ink);color:var(--surface);font-family:var(--f-mono);font-size:.68rem;display:flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap;overflow:hidden;border:0;cursor:pointer;padding:0 4px}
 .tl-seg.edu{background:var(--teal)}
 .tl-seg.now{background:var(--accent)}
-.tl-seg.lane{top:30px;height:8px;background:#0b3d91}
-.tl-label.lane{top:6px}
+.tl-seg.nasa{background:#0b3d91}
 .tl-seg.static{background:var(--rule);color:var(--muted);cursor:default}
 .tl-label.static{color:var(--muted);cursor:default}
 .tl-seg:hover{filter:brightness(1.15)}
-.tl-label{position:absolute;top:40px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
-.tl-year{position:absolute;top:84px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
+.tl-label{position:absolute;top:8px;font-family:var(--f-display);font-size:.82rem;font-weight:700;white-space:nowrap;transform:translateX(-50%);color:var(--ink);cursor:pointer;background:none;border:0;padding:0}
+.tl-year{position:absolute;top:58px;font-family:var(--f-mono);font-size:.66rem;color:var(--muted);transform:translateX(-50%)}
 
 /* Chapters */
 .chapters{display:flex;flex-direction:column;gap:14px}
@@ -507,11 +506,10 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
 <script>
 // Timeline, chapter navigation, lightbox, email copy
 (function(){
-  var T0=2007, T1=2027;
+  var T0=2009, T1=2027;
   var items=[
-    {l:'Lehigh',a:2007.6,b:2011.4,c:'edu'},
-    {id:'nasa',l:'NASA',a:2009.42,b:2009.68,c:'nasa',lane:1},
-    {id:'nasa',l:'',a:2010.42,b:2010.68,c:'nasa',lane:1},
+    {id:'nasa',l:'NASA',a:2009.3,b:2009.75,c:'nasa',lc:2009.98},
+    {id:'nasa',l:'',a:2010.3,b:2010.75,c:'nasa'},
     {id:'l3',l:'L3Harris',a:2011.5,b:2013.4},
     {id:'blue',l:'Blue Origin',a:2013.5,b:2018.05},
     {id:'astra',l:'Astra',a:2018.1,b:2020.45},
@@ -531,7 +529,7 @@ dialog#lb button{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right
     if(!it.l) return;
     var l=document.createElement(it.id?'button':'span'); if(it.id){ l.type='button'; l.tabIndex=-1; l.addEventListener('click',function(){openCh(it.id);}); }
     l.className='tl-label'+(it.lane?' lane':'')+(it.id?'':' static'); l.textContent=it.l;
-    l.style.left=it.lane?pct((2009.42+2010.68)/2):pct((it.a+it.b)/2); tl.appendChild(l);
+    l.style.left=pct(it.lc||(it.a+it.b)/2); tl.appendChild(l);
   });
   [2010,2014,2018,2022,2026].forEach(function(y){var e=document.createElement('span');e.className='tl-year';e.textContent=y;e.style.left=pct(y);tl.appendChild(e);});
   function openCh(id){var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:'smooth',block:'start'});}
